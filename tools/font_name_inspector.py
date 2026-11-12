@@ -171,6 +171,14 @@ def _inspect_face(font, path: Path, root: Path, face_index: int | str) -> dict:
     except Exception as exc:
         cmap_status = "parse_error"
         cmap_error = f"{type(exc).__name__}: {exc}"
+        # ignoreDecompileErrors preserves malformed tables as DefaultTable and
+        # stores the original parser traceback in .ERROR. Prefer that detail.
+        try:
+            raw_cmap_error = getattr(font["cmap"], "ERROR", "")
+            if raw_cmap_error:
+                cmap_error = str(raw_cmap_error).strip()[-4000:]
+        except Exception:
+            pass
 
     axes = []
     try:
@@ -412,7 +420,7 @@ class FontInspectorApp:
         self.open_csv_button.pack(side="left", padx=(8, 0))
         ttk.Label(bottom, text=f"v{APP_VERSION}  |  FontTools {fonttools_version}").pack(side="right")
         self._log("提示：也可以把字体文件夹直接拖到 FontNameInspector.exe 图标上。")
-        self._log("扫描结果统一保存在桌面\FontNameInspector_扫描结果 文件夹中。")
+        self._log("扫描结果统一保存在桌面上的 FontNameInspector_扫描结果 文件夹中。")
 
     def _log(self, text: str):
         self.log.configure(state="normal")
