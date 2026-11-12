@@ -15,7 +15,7 @@ jobs:
       - name: Analyze uploaded font inventory
         run: |
           python - <<'PY'
-          import csv, json, statistics, collections, pathlib, re
+          import csv, json, statistics, collections, pathlib
           base = pathlib.Path(".")
           csv_path = base / "font_inventory_20261112_151422.csv"
           json_path = base / "font_inventory_20261112_151422.json"
@@ -25,44 +25,45 @@ jobs:
               csv_rows = list(reader)
               headers = reader.fieldnames or []
           payload = json.loads(json_path.read_text(encoding="utf-8"))
-          json_rows = payload.get("records", [])
+          rows = payload.get("records", [])
           print("=== FILES ===")
-          for p in (csv_path, json_path, txt_path):
-              print(f"{p.name}: {p.stat().st_size:,} bytes")
-          print("=== JSON ROOT ===")
-          print({k:v for k,v in payload.items() if k != "records" and k != "errors"})
-          print("=== COUNTS ===")
-          unique_files = {r.get("relative_path") or r.get("file") for r in json_rows}
-          print({"csv_rows":len(csv_rows),"json_rows":len(json_rows),"unique_files_from_rows":len(unique_files),
-                 "json_font_file_count":payload.get("font_file_count"),"json_font_face_count":payload.get("font_face_count"),
-                 "json_error_count":payload.get("error_count"),"csv_json_row_count_equal":len(csv_rows)==len(json_rows)})
+          for p in (csv_path, json_path, txt_path): print(f"{p.name}: {p.stat().st_size:,} bytes")
+          print("=== JSON ROOT ===", {k:v for k,v in payload.items() if k not in ("records","errors")})
+          unique_files = {r.get("relative_path") or r.get("file") for r in rows}
+          print("=== COUNTS ===", {"csv_rows":len(csv_rows),"json_rows":len(rows),"unique_files":len(unique_files),
+                "font_file_count":payload.get("font_file_count"),"font_face_count":payload.get("font_face_count"),
+                "error_count":payload.get("error_count"),"csv_json_row_count_equal":len(csv_rows)==len(rows)})
           print("=== CSV HEADERS ===", headers)
-          def counts(field):
-              return dict(collections.Counter((r.get(field) or "").strip() for r in json_rows).most_common(30))
+          def dist(field):
+              return dict(collections.Counter(str(r.get(field) if r.get(field) is not None else "").strip() for r in rows).most_common(40))
           for field in ("extension","sfnt_version","face_index","cmap_status","weight_class","width_class"):
-              print("DIST",field,counts(field))
-          name_fields = ["family_name","subfamily_name","full_name","postscript_name",
-                         "typographic_family_name","typographic_subfamily_name","wws_family_name","wws_subfamily_name"]
+              print("DIST",field,dist(field))
+          name_fields=["family_name","subfamily_name","full_name","postscript_name","typographic_family_name",
+                       "typographic_subfamily_name","wws_family_name","wws_subfamily_name"]
           print("=== NAME FIELD COMPLETENESS ===")
           for field in name_fields:
-              vals=[(r.get(field) or "").strip() for r in json_rows]
+              vals=[str(r.get(field) or "").strip() for r in rows]
               missing=sum(not v for v in vals)
-              print(field,{"missing":missing,"present":len(vals)-missing,"examples":list(dict.fromkeys(v for v in vals if v))[:6]})
-          print("=== BOOLEAN / COVERAGE ===")
+              print(field,{"missing":missing,"present":len(vals)-missing,"examples":list(dict.fromkeys(v for v in vals if v))[:8]})
+          print("=== BOLD / ITALIC ===")
           for field in ("bold","italic"):
-              print(field,dict(collections.Counter(str(r.get(field)) for r in json_rows)))
+              print(field,dict(collections.Counter(str(r.get(field)) for r in rows)))
+          unusual_bold=[r for r in rows if bool(r.get("bold")) and int(r.get("weight_class") or 0)<700]
+          unusual_nonbold=[r for r in rows if not bool(r.get("bold")) and int(r.get("weight_class") or 0)>=700]
+          print("bold_weight_crosscheck",{"bold_below_700":len(unusual_bold),"nonbold_at_least_700":len(unusual_nonbold),
+                "bold_below_700_samples":[(r.get("file"),r.get("face_index"),r.get("family_name"),r.get("weight_class")) for r in unusual_bold[:10]],
+                "nonbold_at_least_700_samples":[(r.get("file"),r.get("face_index"),r.get("family_name"),r.get("weight_class")) for r in unusual_nonbold[:10]]})
+          print("=== COVERAGE COUNTS ===")
           numeric_fields=["unicode_codepoints_count","latin_basic_count","latin1_count","hiragana_count","katakana_count",
                           "cjk_basic_count","cjk_ext_a_count","cjk_ext_b_count","hangul_syllable_count","bopomofo_count"]
           for field in numeric_fields:
-              vals=[]
-              blanks=0
-              for r in json_rows:
+              vals=[]; blanks=0
+              for r in rows:
                   v=r.get(field)
                   try:
                       if v is None or str(v).strip()=="": blanks+=1
                       else: vals.append(int(v))
                   except Exception: blanks+=1
-              stats={}
               if vals:
                   sv=sorted(vals)
                   stats={"n":len(vals),"blank":blanks,"min":sv[0],"median":statistics.median(sv),
@@ -70,49 +71,61 @@ jobs:
               else: stats={"n":0,"blank":blanks}
               print(field,stats)
           print("=== DATA INTEGRITY ===")
-          keys=[(r.get("relative_path"),str(r.get("face_index"))) for r in json_rows]
-          dup=[k for k,n in collections.Counter(keys).items() if n>1]
-          print("duplicate_file_face_keys",len(dup),dup[:10])
-          for field in ("file","relative_path","file_size_bytes","face_index","family_name","subfamily_name","full_name","postscript_name","weight_class","width_class","bold","italic","cmap_status"):
-              missing=sum(r.get(field) is None or str(r.get(field)).strip()=="" for r in json_rows)
+          keys=[(r.get("relative_path"),str(r.get("face_index"))) for r in rows]
+          dup=[(k,n) for k,n in collections.Counter(keys).items() if n>1]
+          print("duplicate_file_face_keys",dup[:20],"total",len(dup))
+          for field in ("file","relative_path","file_size_bytes","face_index","family_name","subfamily_name","full_name","postscript_name",
+                        "weight_class","width_class","bold","italic","cmap_status"):
+              missing=sum(r.get(field) is None or str(r.get(field)).strip()=="" for r in rows)
               if missing: print("MISSING",field,missing)
+          print("table_errors_nonempty",sum(bool(str(r.get("table_errors") or "").strip()) for r in rows))
+          print("cmap_error_nonempty",sum(bool(str(r.get("cmap_error") or "").strip()) for r in rows))
           print("=== TOP CJK COVERAGE ===")
-          ranked=sorted(json_rows,key=lambda r:int(r.get("cjk_basic_count") or 0),reverse=True)
-          for r in ranked[:15]:
-              print({k:r.get(k) for k in ("file","face_index","family_name","subfamily_name","postscript_name","weight_class","cmap_status","unicode_codepoints_count","cjk_basic_count","cjk_ext_a_count","cjk_ext_b_count","bopomofo_count","hiragana_count","katakana_count","hangul_syllable_count")})
+          ranked=sorted(rows,key=lambda r:int(r.get("cjk_basic_count") or 0),reverse=True)
+          for r in ranked[:20]:
+              print({k:r.get(k) for k in ("file","face_index","family_name","subfamily_name","postscript_name","weight_class","width_class",
+                      "bold","italic","cmap_status","unicode_codepoints_count","cjk_basic_count","cjk_ext_a_count","cjk_ext_b_count",
+                      "bopomofo_count","hiragana_count","katakana_count","hangul_syllable_count")})
           print("=== ALL NAME RECORDS ===")
-          total_records=0
-          nameid_counts=collections.Counter()
-          bad_name_json=0
-          for r in json_rows:
+          total_records=0; nameid_counts=collections.Counter(); platforms=collections.Counter(); bad_name_json=0
+          name_record_examples=[]
+          for r in rows:
               try:
                   recs=json.loads(r.get("all_name_records_json") or "[]")
                   total_records+=len(recs)
                   nameid_counts.update(str(x.get("name_id")) for x in recs if isinstance(x,dict))
+                  platforms.update(str(x.get("platform_id")) for x in recs if isinstance(x,dict))
+                  if len(name_record_examples)<4 and recs: name_record_examples.append((r.get("file"),r.get("face_index"),recs[:6]))
               except Exception: bad_name_json+=1
-          print({"total_name_records":total_records,"bad_name_records_json_rows":bad_name_json,"name_id_counts":dict(nameid_counts.most_common())})
+          print({"total_name_records":total_records,"bad_name_records_json_rows":bad_name_json,
+                 "name_id_counts":dict(nameid_counts.most_common()),"platform_counts":dict(platforms),"examples":name_record_examples})
+          print("=== DUPLICATE POSTCRIPT NAMES ===")
+          ps=collections.defaultdict(list)
+          for r in rows:
+              if r.get("postscript_name"): ps[str(r["postscript_name"])].append((r.get("file"),r.get("face_index"),r.get("subfamily_name")))
+          dup_ps=[(k,v) for k,v in ps.items() if len(v)>1]
+          print("duplicate_postscript_name_groups",len(dup_ps),"examples",dup_ps[:15])
           print("=== CSV/JSON ROW COMPARISON ===")
-          cmp_fields=["relative_path","face_index","family_name","subfamily_name","full_name","postscript_name",
-                      "weight_class","width_class","bold","italic","cmap_status","unicode_codepoints_count","cjk_basic_count"]
+          cmp_fields=["relative_path","face_index","family_name","subfamily_name","full_name","postscript_name","weight_class","width_class",
+                      "bold","italic","cmap_status","unicode_codepoints_count","cjk_basic_count"]
           csv_index={(r.get("relative_path"),str(r.get("face_index"))):r for r in csv_rows}
           mismatches=[]
-          for r in json_rows:
+          for r in rows:
               k=(r.get("relative_path"),str(r.get("face_index")))
               c=csv_index.get(k)
-              if c is None:
-                  mismatches.append((k,"missing csv row"))
+              if c is None: mismatches.append((k,"missing csv row"))
               else:
                   for f in cmp_fields:
                       if str(c.get(f,"")) != str(r.get(f,"")):
                           mismatches.append((k,f,c.get(f),r.get(f)))
-                          if len(mismatches)>=20: break
-              if len(mismatches)>=20: break
+                          if len(mismatches)>=30: break
+              if len(mismatches)>=30: break
           print("mismatch_examples",mismatches)
           print("=== TXT SUMMARY ===")
           lines=txt_path.read_text(encoding="utf-8").splitlines()
           heads=[x for x in lines if x and not x.startswith("  ")]
-          detail=[x.strip() for x in lines if x.startswith("  ")]
-          print({"txt_header_records":len(heads),"detail_lines":len(detail),
-                 "details_first_15":detail[:15]})
+          details=[x.strip() for x in lines if x.startswith("  ")]
+          print({"txt_header_records":len(heads),"detail_lines":len(details),"details_first_20":details[:20]})
+          print("=== JSON errors array sample ===",payload.get("errors",[])[:5])
           print("=== END ===")
           PY
