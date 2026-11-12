@@ -27,7 +27,8 @@
 ## 扫描内容
 
 - TTF / OTF / TTC / OTC 字体文件；会检查文件头，因此扩展名为 .TTF 的实际 TTC 集合也能识别。
-- 对旧式字体的损坏／非标准 cmap 表采用容错读取：尽量保留字体内部名称和字重；无法可靠读取字符覆盖时，在 CSV 标注 cmap_status / cmap_error，而不是将覆盖数误写为 0。
+- 对旧式字体的非标准 cmap 表采用容错读取：逐个解析 Unicode cmap 子表，跳过损坏的 format 4 段；对 format 12/13 忽略超出组数据的尾随填充字节。尽量恢复字符覆盖；仍无法恢复时，在 CSV 标注 cmap_status / cmap_error，而不是将覆盖数误写为 0。
+- cmap_status 为 ok 表示正常解析，recovered 表示跳过／修复非标准子表后恢复了字符覆盖，parse_error 表示仍无法解析。
 - 每个 TTC / OTC 内的每一个字体面（face index）。
 - Family、Subfamily、Full Name、PostScript Name。
 - Typographic Family / Subfamily、WWS Family / Subfamily。
