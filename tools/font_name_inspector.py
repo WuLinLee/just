@@ -465,6 +465,19 @@ class FontInspectorApp:
                 try:
                     face_rows = _inspect_file(path, root)
                     records.extend(face_rows)
+                    # Also include face-level table issues in the TXT report.
+                    # A bad cmap does not discard the face's recovered metadata.
+                    for row in face_rows:
+                        face_issues = []
+                        if row.get("cmap_status") == "parse_error":
+                            face_issues.append("cmap: " + row.get("cmap_error", "解析失败"))
+                        if row.get("table_errors"):
+                            face_issues.append(row["table_errors"])
+                        if face_issues:
+                            errors.append({
+                                "file": f"{path} [face {row.get('face_index', '')}]",
+                                "error": " | ".join(face_issues),
+                            })
                     self.events.put(("log", f"[{index}/{len(files)}] {path.name}：读取 {len(face_rows)} 个字体面"))
                 except Exception as exc:
                     errors.append({"file": str(path), "error": f"{type(exc).__name__}: {exc}"})
