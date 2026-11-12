@@ -1,0 +1,608 @@
+E:\mpv-lazy\font for mpv\DFBrr7.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFBrr7.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFBrr7.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFBrs5_3.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFBrs5_3.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFBrs5_3.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFBRUSHRD.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFBRUSHRD.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFBRUSHRD.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\dfbrushsq.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\dfbrushsq.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\dfbrushsq.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFCrd3_6.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFCrd3_6.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFCrd3_6.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFCrs9_A.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFCrs9_A.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFCrs9_A.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFFuu7_2.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFFuu7_2.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFFuu7_2.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGBrushRD-W12.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGBrushRD-W12.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGBrushRD-W12.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGBrushRD-W7.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGBrushRD-W7.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGBrushRD-W7.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGOT5_U.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGOT5_U.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGOT5_U.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGotP3_2.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGotP3_2.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGotP3_2.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGotP5_D.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGotP5_D.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGotP5_D.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGRyuSekiG-W9.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGRyuSekiG-W9.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGRyuSekiG-W9.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGsk7.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGsk7.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGsk7.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGuYinMedium-B5 & DFPGuYinMedium-B5.ttc [face 0]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFGuYinMedium-B5 & DFPGuYinMedium-B5.ttc [face 1]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFGys3.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGys3.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFGys3.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsg7.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsg7.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsg7.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsm5.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsm5.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsm5.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsm7.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsm7.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsm7.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsm9.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsm9.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsm9.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsr4.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsr4.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFHsr4.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\dfjinwenw3-b5.ttc [face 0]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\dfjinwenw3-b5.ttc [face 1]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFKAI5_U.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKAI5_U.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKAI5_U.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKai7_E.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKai7_E.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKai7_E.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKAI7_U.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKAI7_U.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKAI7_U.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKai9_1.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKai9_1.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKai9_1.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKAI9_U.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKAI9_U.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKAI9_U.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKOIN4.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKOIN4.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKyks3.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKyks3.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKyks3.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKyks4.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKyks4.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFKyks4.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\Dflgs9.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\Dflgs9.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\Dflgs9.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMaruGothic-Md.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMaruGothic-Md.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMaruGothic-Md.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMaruMoji-W3.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMaruMoji-W3.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMaruMoji-W3.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMimP5_9.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMimP5_9.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMimP5_9.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMIN5_U.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMIN5_U.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMIN5_U.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\Dfminc.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\Dfminc.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\Dfminc.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRG5_U.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRG5_U.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRG5_U.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrg7.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrg7.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrg7.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRG7_U.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRG7_U.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRG7_U.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrg9_1.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrg9_1.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrg9_1.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRG9_U.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRG9_U.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRG9_U.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRM5.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRM5.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMRM5.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrm7.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrm7.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrm7.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrm9.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrm9.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFMrm9.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFOyj5.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFOyj5.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFOyj5.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\dfpop.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\dfpop.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFPOP1-C.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFPOP1-C.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFPOP1-C.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFPop3.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFPop3.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFPop3.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFPop5.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFPop5.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFPop5.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFRULE5.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFRULE5.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFSgyo5.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFSgyo5.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFSgyo5.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFSoge7.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFSoge7.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFSoge7.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\dfsoge9.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\dfsoge9.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\dfsoge9.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFT.ttc [face 0]
+  cmap recovered: selected format 12; format 12 @ 6166: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFT.ttc [face 1]
+  cmap recovered: selected format 12; format 12 @ 6154: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFT_GY5.TTC [face 0]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFT_GY5.TTC [face 1]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFT_LM9.TTC [face 0]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFT_LM9.TTC [face 1]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFT_N5.ttc [face 0]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFT_N5.ttc [face 1]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFT_Y7.ttc [face 0]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFT_Y7.ttc [face 1]
+  cmap recovered: selected format 12; format 12 @ 34892: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\DFTlei5.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFTlei5.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DFTlei5.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DF太丸ゴシック体.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DF太丸ゴシック体.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\DF太丸ゴシック体.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\fuuc.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\fuuc.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\fuuc.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\H-GungSeo2.2.ttf [face ]
+  cmap recovered: selected format 12; format 4 @ 44: ValueError: format 4 segment arrays exceed subtable length
+
+E:\mpv-lazy\font for mpv\LXGWWenKai-Bold.ttf [face ]
+  cmap recovered: selected format 12; format 4 @ 44: ValueError: format 4 segment arrays exceed subtable length
+
+E:\mpv-lazy\font for mpv\mingliub.ttc [face 0]
+  cmap recovered: selected format 12; format 12 @ 228: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\mingliub.ttc [face 1]
+  cmap recovered: selected format 12; format 12 @ 228: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\mingliub.ttc [face 2]
+  cmap recovered: selected format 12; format 12 @ 228: format 12 ignored 4 trailing padding bytes
+
+E:\mpv-lazy\font for mpv\op ed jap font.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\op ed jap font.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\op ed jap font.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\OP字体.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\OP字体.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\OP字体.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\Pococ.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\Pococ.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\Pococ.TTC [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\rdw7.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\rdw7.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\rdw7.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\经典中圆简.ttf [face ]
+  cmap recovered: selected format 4; format 4 @ 42096: format 4 skipped 1 invalid segment/codepoint entries; format 4 @ 28: format 4 skipped 1 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\经典综艺体简.ttf [face ]
+  cmap recovered: selected format 4; format 4 @ 42096: format 4 skipped 1 invalid segment/codepoint entries; format 4 @ 28: format 4 skipped 1 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\经典长宋简.TTF [face ]
+  cmap recovered: selected format 4; format 4 @ 42096: format 4 skipped 1 invalid segment/codepoint entries; format 4 @ 28: format 4 skipped 1 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\華康儷金黑.TTC [face 0]
+  cmap recovered: selected format 12; format 12 @ 60486: format 12 skipped invalid/overlapping group 1; format 12 @ 60486: format 12 skipped invalid/overlapping group 2; format 12 @ 60486: format 12 skipped invalid/overlapping group 3; format 12 @ 60486: format 12 skipped invalid/overlapping group 4; format 12 @ 60486: format 12 skipped invalid/overlapping group 5; format 12 @ 60486: format 12 skipped invalid/overlapping group 6; format 12 @ 60486: format 12 skipped invalid/overlapping group 7; format 12 @ 60486: format 12 skipped invalid/overlapping group 8; format 12 @ 60486: format 12 skipped invalid/overlapping group 9; format 12 @ 60486: format 12 skipped invalid/overlapping group 10; format 12 @ 60486: format 12 skipped invalid/overlapping group 11; format 12 @ 60486: format 12 skipped invalid/overlapping group 12; format 12 @ 60486: format 12 skipped invalid/overlapping group 13; format 12 @ 60486: format 12 skipped invalid/overlapping group 14; format 12 @ 60486: format 12 skipped invalid/overlapping group 15; format 12 @ 60486: format 12 skipped invalid/overlapping group 16; format 12 @ 60486: format 12 skipped invalid/overlapping group 17; format 12 @ 60486: format 12 skipped invalid/overlapping group 18; format 12 @ 60486: format 12 skipped invalid/overlapping group 19; format 12 @ 60486: format 12 skipped invalid/overlapping group 20; format 12 @ 60486: format 12 skipped invalid/overlapping group 21; format 12 @ 60486: format 12 skipped invalid/overlapping group 22; format 12 @ 60486: format 12 skipped invalid/overlapping group 23; format 12 @ 60486: format 12 skipped invalid/overlapping group 24; format 12 @ 60486: format 12 skipped invalid/overlapping group 25; format 12 @ 60486: format 12 skipped invalid/overlapping group 26; format 12 @ 60486: format 12 skipped invalid/overlapping group 27; format 12 @ 60486: format 12 skipped invalid/overlapping group 28; format 12 @ 60486: format 12 skipped invalid/overlapping group 29; format 12 @ 60486: format 12 skipped invalid/overlapping group 30; format 12 @ 60486: format 12 skipped invalid/overlapping group 31; format 12 @ 60486: format 12 skipped invalid/overlapping group 32; format 12 @ 60486: format 12 skipped invalid/overlapping group 33
+
+E:\mpv-lazy\font for mpv\華康儷金黑.TTC [face 1]
+  cmap recovered: selected format 12; format 12 @ 60486: format 12 skipped invalid/overlapping group 1; format 12 @ 60486: format 12 skipped invalid/overlapping group 2; format 12 @ 60486: format 12 skipped invalid/overlapping group 3; format 12 @ 60486: format 12 skipped invalid/overlapping group 4; format 12 @ 60486: format 12 skipped invalid/overlapping group 5; format 12 @ 60486: format 12 skipped invalid/overlapping group 6; format 12 @ 60486: format 12 skipped invalid/overlapping group 7; format 12 @ 60486: format 12 skipped invalid/overlapping group 8; format 12 @ 60486: format 12 skipped invalid/overlapping group 9; format 12 @ 60486: format 12 skipped invalid/overlapping group 10; format 12 @ 60486: format 12 skipped invalid/overlapping group 11; format 12 @ 60486: format 12 skipped invalid/overlapping group 12; format 12 @ 60486: format 12 skipped invalid/overlapping group 13; format 12 @ 60486: format 12 skipped invalid/overlapping group 14; format 12 @ 60486: format 12 skipped invalid/overlapping group 15; format 12 @ 60486: format 12 skipped invalid/overlapping group 16; format 12 @ 60486: format 12 skipped invalid/overlapping group 17; format 12 @ 60486: format 12 skipped invalid/overlapping group 18; format 12 @ 60486: format 12 skipped invalid/overlapping group 19; format 12 @ 60486: format 12 skipped invalid/overlapping group 20; format 12 @ 60486: format 12 skipped invalid/overlapping group 21; format 12 @ 60486: format 12 skipped invalid/overlapping group 22; format 12 @ 60486: format 12 skipped invalid/overlapping group 23; format 12 @ 60486: format 12 skipped invalid/overlapping group 24; format 12 @ 60486: format 12 skipped invalid/overlapping group 25; format 12 @ 60486: format 12 skipped invalid/overlapping group 26; format 12 @ 60486: format 12 skipped invalid/overlapping group 27; format 12 @ 60486: format 12 skipped invalid/overlapping group 28; format 12 @ 60486: format 12 skipped invalid/overlapping group 29; format 12 @ 60486: format 12 skipped invalid/overlapping group 30; format 12 @ 60486: format 12 skipped invalid/overlapping group 31; format 12 @ 60486: format 12 skipped invalid/overlapping group 32; format 12 @ 60486: format 12 skipped invalid/overlapping group 33
+
+E:\mpv-lazy\font for mpv\華康新篆體.TTC [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 1 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\華康新篆體.TTC [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 1 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\ＤＦクラフト遊W7.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\ＤＦクラフト遊W7.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\ＤＦクラフト遊W7.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\ＤＦブラッシュＲＤW7 & DFPBrushRD-W7 & DFGBrushRD-W7.ttc [face 0]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\ＤＦブラッシュＲＤW7 & DFPBrushRD-W7 & DFGBrushRD-W7.ttc [face 1]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
+
+E:\mpv-lazy\font for mpv\ＤＦブラッシュＲＤW7 & DFPBrushRD-W7 & DFGBrushRD-W7.ttc [face 2]
+  cmap recovered: selected format 4; format 4 @ 542: format 4 skipped 2 invalid segment/codepoint entries
