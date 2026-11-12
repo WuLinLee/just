@@ -150,19 +150,13 @@ def _inspect_file(path: Path, root: Path) -> list[dict]:
     if path.suffix.lower() in {".ttc", ".otc"}:
         collection = TTCollection(str(path), lazy=True)
         try:
+            # TTCollection fonts share one underlying file handle. Do not close
+            # each face inside the loop; close the collection after all faces
+            # have been inspected.
             for index, font in enumerate(collection.fonts):
-                try:
-                    rows.append(_inspect_face(font, path, root, index))
-                finally:
-                    try:
-                        font.close()
-                    except Exception:
-                        pass
+                rows.append(_inspect_face(font, path, root, index))
         finally:
-            try:
-                collection.close()
-            except Exception:
-                pass
+            collection.close()
     else:
         font = TTFont(str(path), lazy=True)
         try:
