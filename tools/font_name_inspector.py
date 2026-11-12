@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import ctypes
 import json
 import os
 import queue
@@ -17,14 +18,14 @@ from tkinter import filedialog, messagebox, ttk
 from fontTools import version as fonttools_version
 from fontTools.ttLib import TTCollection, TTFont
 
-APP_VERSION = "1.0.0"
+APP_VERSION = "1.1.0"
 SUPPORTED_EXTENSIONS = {".ttf", ".otf", ".ttc", ".otc"}
 CSV_FIELDS = [
     "file", "relative_path", "extension", "file_size_bytes", "face_index",
     "sfnt_version", "family_name", "subfamily_name", "full_name",
     "postscript_name", "typographic_family_name", "typographic_subfamily_name",
     "wws_family_name", "wws_subfamily_name", "weight_class", "width_class",
-    "bold", "italic", "variable_axes", "unicode_codepoints_count",
+    "bold", "italic", "variable_axes", "cmap_status", "cmap_error", "table_errors", "unicode_codepoints_count",
     "latin_basic_count", "latin1_count", "hiragana_count", "katakana_count",
     "cjk_basic_count", "cjk_ext_a_count", "cjk_ext_b_count",
     "hangul_syllable_count", "bopomofo_count", "all_name_records_json",
@@ -97,30 +98,98 @@ def _count_range(codepoints: set[int], start: int, end: int) -> int:
 
 
 def _inspect_face(font, path: Path, root: Path, face_index: int | str) -> dict:
-    name_table = font["name"] if "name" in font else None
+    table_errors = []
+
+    # The name table is read independently. A malformed cmap must not erase
+    # the internal family / subfamily / PostScript names.
+    try:
+        name_table = font["name"] if "name" in font else None
+    except Exception as exc:
+        name_table = None
+        table_errors.append(f"name: {type(exc).__name__}: {exc}")
     names = {field: _get_name(name_table, name_id) for field, name_id in NAME_IDS.items()}
-    os2 = font["OS/2"] if "OS/2" in font else None
-    head = font["head"] if "head" in font else None
+    try:
+        name_records = _name_records(name_table)
+    except Exception as exc:
+        name_records = []
+        table_errors.append(f"name records: {type(exc).__name__}: {exc}")
+
+    try:
+        os2 = font["OS/2"] if "OS/2" in font else None
+    except Exception as exc:
+        os2 = None
+        table_errors.append(f"OS/2: {type(exc).__name__}: {exc}")
+    try:
+        head = font["head"] if "head" in font else None
+    except Exception as exc:
+        head = None
+        table_errors.append(f"head: {type(exc).__name__}: {exc}")
+
     weight_class = getattr(os2, "usWeightClass", "") if os2 else ""
     width_class = getattr(os2, "usWidthClass", "") if os2 else ""
     fs_selection = getattr(os2, "fsSelection", 0) if os2 else 0
     mac_style = getattr(head, "macStyle", 0) if head else 0
     is_bold = bool((fs_selection & (1 << 5)) or (mac_style & 1) or (weight_class and weight_class >= 700))
     is_italic = bool((fs_selection & 1) or (mac_style & 2))
-    codepoints = set((font.getBestCmap() or {}).keys())
+
+    # A number of older font collections contain malformed cmap subtables.
+    # Keep the metadata row; report coverage as unavailable instead of zero.
+    coverage = {
+        "unicode_codepoints_count": "",
+        "latin_basic_count": "",
+        "latin1_count": "",
+        "hiragana_count": "",
+        "katakana_count": "",
+        "cjk_basic_count": "",
+        "cjk_ext_a_count": "",
+        "cjk_ext_b_count": "",
+        "hangul_syllable_count": "",
+        "bopomofo_count": "",
+    }
+    cmap_status = "unavailable"
+    cmap_error = ""
+    try:
+        best_cmap = font.getBestCmap()
+        if best_cmap is None:
+            cmap_status = "no_unicode_cmap"
+            coverage = {key: 0 for key in coverage}
+        else:
+            codepoints = set(best_cmap.keys())
+            coverage = {
+                "unicode_codepoints_count": len(codepoints),
+                "latin_basic_count": _count_range(codepoints, 0x0020, 0x007E),
+                "latin1_count": _count_range(codepoints, 0x00A0, 0x00FF),
+                "hiragana_count": _count_range(codepoints, 0x3040, 0x309F),
+                "katakana_count": _count_range(codepoints, 0x30A0, 0x30FF),
+                "cjk_basic_count": _count_range(codepoints, 0x4E00, 0x9FFF),
+                "cjk_ext_a_count": _count_range(codepoints, 0x3400, 0x4DBF),
+                "cjk_ext_b_count": _count_range(codepoints, 0x20000, 0x2A6DF),
+                "hangul_syllable_count": _count_range(codepoints, 0xAC00, 0xD7AF),
+                "bopomofo_count": _count_range(codepoints, 0x3100, 0x312F),
+            }
+            cmap_status = "ok"
+    except Exception as exc:
+        cmap_status = "parse_error"
+        cmap_error = f"{type(exc).__name__}: {exc}"
+
     axes = []
-    if "fvar" in font:
-        for axis in font["fvar"].axes:
-            axes.append({
-                "tag": getattr(axis, "axisTag", ""),
-                "min": getattr(axis, "minValue", None),
-                "default": getattr(axis, "defaultValue", None),
-                "max": getattr(axis, "maxValue", None),
-            })
+    try:
+        if "fvar" in font:
+            for axis in font["fvar"].axes:
+                axes.append({
+                    "tag": getattr(axis, "axisTag", ""),
+                    "min": getattr(axis, "minValue", None),
+                    "default": getattr(axis, "defaultValue", None),
+                    "max": getattr(axis, "maxValue", None),
+                })
+    except Exception as exc:
+        table_errors.append(f"fvar: {type(exc).__name__}: {exc}")
+
     try:
         relative_path = str(path.relative_to(root))
     except Exception:
         relative_path = str(path)
+
     return {
         "file": path.name, "relative_path": relative_path,
         "extension": path.suffix.lower(), "file_size_bytes": path.stat().st_size,
@@ -129,42 +198,42 @@ def _inspect_face(font, path: Path, root: Path, face_index: int | str) -> dict:
         "weight_class": weight_class, "width_class": width_class,
         "bold": is_bold, "italic": is_italic,
         "variable_axes": json.dumps(axes, ensure_ascii=False, separators=(",", ":")),
-        "unicode_codepoints_count": len(codepoints),
-        "latin_basic_count": _count_range(codepoints, 0x0020, 0x007E),
-        "latin1_count": _count_range(codepoints, 0x00A0, 0x00FF),
-        "hiragana_count": _count_range(codepoints, 0x3040, 0x309F),
-        "katakana_count": _count_range(codepoints, 0x30A0, 0x30FF),
-        "cjk_basic_count": _count_range(codepoints, 0x4E00, 0x9FFF),
-        "cjk_ext_a_count": _count_range(codepoints, 0x3400, 0x4DBF),
-        "cjk_ext_b_count": _count_range(codepoints, 0x20000, 0x2A6DF),
-        "hangul_syllable_count": _count_range(codepoints, 0xAC00, 0xD7AF),
-        "bopomofo_count": _count_range(codepoints, 0x3100, 0x312F),
+        "cmap_status": cmap_status,
+        "cmap_error": cmap_error,
+        **coverage,
+        "table_errors": " | ".join(table_errors),
         "all_name_records_json": json.dumps(
-            _name_records(name_table), ensure_ascii=False, separators=(",", ":")
+            name_records, ensure_ascii=False, separators=(",", ":")
         ),
     }
 
-
 def _inspect_file(path: Path, root: Path) -> list[dict]:
+    # Inspect the file signature, not its extension. A few old font collections
+    # in user libraries are TTC containers renamed with a .TTF suffix.
+    with path.open("rb") as handle:
+        signature = handle.read(4)
+
     rows = []
-    if path.suffix.lower() in {".ttc", ".otc"}:
-        collection = TTCollection(str(path), lazy=True)
+    if signature == b"ttcf":
+        collection = TTCollection(
+            str(path), lazy=True, ignoreDecompileErrors=True
+        )
         try:
-            # TTCollection fonts share one underlying file handle. Do not close
-            # each face inside the loop; close the collection after all faces
-            # have been inspected.
+            # TTC faces share one underlying file handle. Keep the collection
+            # open until every face has been inspected.
             for index, font in enumerate(collection.fonts):
                 rows.append(_inspect_face(font, path, root, index))
         finally:
             collection.close()
     else:
-        font = TTFont(str(path), lazy=True)
+        font = TTFont(
+            str(path), lazy=True, ignoreDecompileErrors=True
+        )
         try:
             rows.append(_inspect_face(font, path, root, ""))
         finally:
             font.close()
     return rows
-
 
 def _find_fonts(root: Path, recursive: bool) -> list[Path]:
     found = []
@@ -183,16 +252,69 @@ def _find_fonts(root: Path, recursive: bool) -> list[Path]:
     return found
 
 
+def _get_desktop_directory() -> Path:
+    """Return the actual Windows Desktop known folder, including OneDrive redirects."""
+    if os.name == "nt":
+        # Windows Known Folder API respects moved / OneDrive-synced desktops.
+        try:
+            from ctypes import wintypes
+
+            class GUID(ctypes.Structure):
+                _fields_ = [
+                    ("Data1", ctypes.c_ulong),
+                    ("Data2", ctypes.c_ushort),
+                    ("Data3", ctypes.c_ushort),
+                    ("Data4", ctypes.c_ubyte * 8),
+                ]
+
+            desktop_id = GUID(
+                0xB4BFCC3A, 0xDB2C, 0x424C,
+                (ctypes.c_ubyte * 8)(0xB0, 0x29, 0x7F, 0xE9, 0x9A, 0x87, 0xC6, 0x41),
+            )
+            shell32 = ctypes.WinDLL("shell32", use_last_error=True)
+            ole32 = ctypes.WinDLL("ole32")
+            get_folder = shell32.SHGetKnownFolderPath
+            get_folder.argtypes = [
+                ctypes.POINTER(GUID), wintypes.DWORD, wintypes.HANDLE,
+                ctypes.POINTER(wintypes.LPWSTR),
+            ]
+            get_folder.restype = ctypes.c_long
+            path_buffer = wintypes.LPWSTR()
+            result = get_folder(ctypes.byref(desktop_id), 0, None, ctypes.byref(path_buffer))
+            if result == 0 and path_buffer.value:
+                desktop = Path(path_buffer.value)
+                ole32.CoTaskMemFree.argtypes = [ctypes.c_void_p]
+                ole32.CoTaskMemFree(ctypes.cast(path_buffer, ctypes.c_void_p))
+                if desktop.exists():
+                    return desktop
+        except Exception:
+            pass
+
+        # Fallback: the Shell User Shell Folders registry value also supports
+        # redirected and OneDrive desktops.
+        try:
+            import winreg
+
+            with winreg.OpenKey(
+                winreg.HKEY_CURRENT_USER,
+                r"Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders",
+            ) as key:
+                value, _ = winreg.QueryValueEx(key, "Desktop")
+            desktop = Path(os.path.expandvars(value)).expanduser()
+            if desktop.exists():
+                return desktop
+        except Exception:
+            pass
+
+    return Path.home() / "Desktop"
+
+
 def _write_reports(root: Path, records: list[dict], errors: list[dict]) -> dict:
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_dir = root
-    try:
-        test_path = output_dir / f".font_inspector_write_test_{stamp}.tmp"
-        test_path.write_text("ok", encoding="utf-8")
-        test_path.unlink(missing_ok=True)
-    except Exception:
-        output_dir = Path.home() / "Documents" / "FontNameInspector"
-        output_dir.mkdir(parents=True, exist_ok=True)
+    # Keep all output files together in a dedicated folder on the real Desktop.
+    output_dir = _get_desktop_directory() / "FontNameInspector_扫描结果"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
     csv_path = output_dir / f"font_inventory_{stamp}.csv"
     json_path = output_dir / f"font_inventory_{stamp}.json"
     errors_path = output_dir / f"font_scan_errors_{stamp}.txt" if errors else None
@@ -208,6 +330,7 @@ def _write_reports(root: Path, records: list[dict], errors: list[dict]) -> dict:
         "fonttools_version": fonttools_version,
         "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "scanned_directory": str(root),
+        "output_directory": str(output_dir),
         "font_file_count": len({row["relative_path"] for row in records}),
         "font_face_count": len(records),
         "error_count": len(errors),
@@ -223,7 +346,6 @@ def _write_reports(root: Path, records: list[dict], errors: list[dict]) -> dict:
         "errors": str(errors_path) if errors_path else "",
         "output_dir": str(output_dir),
     }
-
 
 class FontInspectorApp:
     def __init__(self, window: tk.Tk):
@@ -290,7 +412,7 @@ class FontInspectorApp:
         self.open_csv_button.pack(side="left", padx=(8, 0))
         ttk.Label(bottom, text=f"v{APP_VERSION}  |  FontTools {fonttools_version}").pack(side="right")
         self._log("提示：也可以把字体文件夹直接拖到 FontNameInspector.exe 图标上。")
-        self._log("扫描结果默认保存在被扫描的字体目录中。")
+        self._log("扫描结果统一保存在桌面\FontNameInspector_扫描结果 文件夹中。")
 
     def _log(self, text: str):
         self.log.configure(state="normal")
