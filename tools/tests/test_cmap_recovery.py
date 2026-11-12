@@ -44,9 +44,9 @@ class CmapRecoveryTests(unittest.TestCase):
         self.assertIn("skipped", warnings[0])
 
     def test_format12_ignores_four_byte_trailer(self):
-        expected = struct.pack(">HHLLL", 12, 0, 28, 0, 1)
+        header = struct.pack(">HHLLL", 12, 0, 32, 0, 1)
         group = struct.pack(">LLL", 0x4E00, 0x4E02, 10)
-        data = expected + group + b"\x00\x00\x00\x00"
+        data = header + group + b"\x00\x00\x00\x00"
         codepoints, warnings = _parse_cmap12_or_13(data, 12, glyph_count=100)
         self.assertEqual(codepoints, {0x4E00, 0x4E01, 0x4E02})
         self.assertTrue(any("trailing padding" in item for item in warnings))
