@@ -12,7 +12,11 @@
 
 ## 输出结果
 
-扫描结果默认保存在被扫描的字体目录：
+三个结果文件集中保存在 Windows 实际桌面（自动识别移动桌面／OneDrive 桌面）下的文件夹：
+
+`桌面\\FontNameInspector_扫描结果\\`
+
+文件名带扫描时间戳，避免覆盖上一次结果：
 
 - font_inventory_时间戳.csv：Excel 可打开，使用 UTF-8 BOM 编码。
 - font_inventory_时间戳.json：完整结构化数据。
@@ -22,7 +26,8 @@
 
 ## 扫描内容
 
-- TTF / OTF / TTC / OTC 字体文件。
+- TTF / OTF / TTC / OTC 字体文件；会检查文件头，因此扩展名为 .TTF 的实际 TTC 集合也能识别。
+- 对旧式字体的损坏／非标准 cmap 表采用容错读取：尽量保留字体内部名称和字重；无法可靠读取字符覆盖时，在 CSV 标注 cmap_status / cmap_error，而不是将覆盖数误写为 0。
 - 每个 TTC / OTC 内的每一个字体面（face index）。
 - Family、Subfamily、Full Name、PostScript Name。
 - Typographic Family / Subfamily、WWS Family / Subfamily。
@@ -35,6 +40,7 @@
 - 扫描字体文件内部元数据，不是仅根据文件名猜测。
 - 不会模拟 Windows DirectWrite 或 libass 的完整字体匹配算法；最终仍应使用 mpv 播放真实 ASS 样本验证。
 - 默认递归扫描普通子目录，不跟随目录符号链接，以避免循环扫描。
+- 输出文件：CSV（Excel 字体清单）、JSON（完整元数据）、TXT（存在读取错误时生成的错误记录）。
 - 只读取字体，不会安装、修改或删除字体文件。
 
 ## 构建方式
