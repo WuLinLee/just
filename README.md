@@ -1,3 +1,10 @@
+## Windows 免安装字体扫描工具（已云编译）
+
+- **[下载 FontNameInspector-Portable.zip](https://github.com/WuLinLee/just/releases/download/windows-portable-latest/FontNameInspector-Portable.zip)**：解压后双击 EXE 即可使用；无需在本机安装 Python、pip 或 FontTools。
+- [直接下载 EXE](https://github.com/WuLinLee/just/releases/download/windows-portable-latest/FontNameInspector.exe)
+- [查看云编译结果](https://github.com/WuLinLee/just/actions/runs/43162222972)
+- [工具使用说明](./tools/README_免安装使用.md)
+
 # mpv / ACG 字幕字体缺口清单
 
 本仓库用于记录对照你上传的 `E:\\mpv-lazy\\font for mpv` 字体目录后，值得补充的动漫／影视字幕字体。
