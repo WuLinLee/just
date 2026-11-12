@@ -1,5 +1,10 @@
 import struct
+import sys
 import unittest
+from pathlib import Path
+
+# Make the sibling tools directory importable when unittest discovers this file.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from font_name_inspector import _parse_cmap4, _parse_cmap12_or_13
 
