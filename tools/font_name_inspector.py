@@ -7,6 +7,7 @@ import ctypes
 import json
 import os
 import queue
+import struct
 import sys
 import threading
 import traceback
@@ -18,7 +19,7 @@ from tkinter import filedialog, messagebox, ttk
 from fontTools import version as fonttools_version
 from fontTools.ttLib import TTCollection, TTFont
 
-APP_VERSION = "1.1.0"
+APP_VERSION = "1.2.0"
 SUPPORTED_EXTENSIONS = {".ttf", ".otf", ".ttc", ".otc"}
 CSV_FIELDS = [
     "file", "relative_path", "extension", "file_size_bytes", "face_index",
@@ -97,6 +98,253 @@ def _count_range(codepoints: set[int], start: int, end: int) -> int:
     return sum(1 for cp in codepoints if start <= cp <= end)
 
 
+def _parse_cmap4(sub_data: bytes, glyph_count: int | None) -> tuple[set[int], list[str]]:
+    """Tolerantly parse a Unicode cmap format 4, skipping invalid glyph offsets."""
+    if len(sub_data) < 16:
+        raise ValueError("format 4 subtable is shorter than its header")
+    declared_length = struct.unpack_from(">H", sub_data, 2)[0]
+    if declared_length < 16 or declared_length > len(sub_data):
+        raise ValueError(f"invalid format 4 length {declared_length}")
+    data = sub_data[:declared_length]
+    seg_count_x2 = struct.unpack_from(">H", data, 6)[0]
+    if not seg_count_x2 or seg_count_x2 % 2:
+        raise ValueError(f"invalid segCountX2 {seg_count_x2}")
+    seg_count = seg_count_x2 // 2
+    end_pos = 14
+    start_pos = end_pos + 2 * seg_count + 2
+    delta_pos = start_pos + 2 * seg_count
+    range_pos = delta_pos + 2 * seg_count
+    glyph_pos = range_pos + 2 * seg_count
+    if glyph_pos > len(data):
+        raise ValueError("format 4 segment arrays exceed subtable length")
+
+    end_codes = struct.unpack_from(f">{seg_count}H", data, end_pos)
+    start_codes = struct.unpack_from(f">{seg_count}H", data, start_pos)
+    deltas = struct.unpack_from(f">{seg_count}H", data, delta_pos)
+    range_offsets = struct.unpack_from(f">{seg_count}H", data, range_pos)
+    glyph_array_bytes = data[glyph_pos:]
+    glyph_array_count = len(glyph_array_bytes) // 2
+    codepoints: set[int] = set()
+    skipped = 0
+
+    for i, (start_code, end_code, delta, range_offset) in enumerate(
+        zip(start_codes, end_codes, deltas, range_offsets)
+    ):
+        if start_code > end_code:
+            skipped += 1
+            continue
+        # U+FFFF is the required sentinel and is not a character mapping.
+        upper = min(end_code, 0xFFFE)
+        for codepoint in range(start_code, upper + 1):
+            if range_offset == 0:
+                glyph_id = (codepoint + delta) & 0xFFFF
+            else:
+                if range_offset % 2:
+                    skipped += 1
+                    continue
+                index = codepoint + (range_offset // 2) - start_code + i - seg_count
+                if not 0 <= index < glyph_array_count:
+                    skipped += 1
+                    continue
+                glyph_id = struct.unpack_from(">H", glyph_array_bytes, index * 2)[0]
+                if glyph_id:
+                    glyph_id = (glyph_id + delta) & 0xFFFF
+            if glyph_id and (glyph_count is None or glyph_id < glyph_count):
+                codepoints.add(codepoint)
+
+    warnings = []
+    if skipped:
+        warnings.append(f"format 4 skipped {skipped} invalid segment/codepoint entries")
+    return codepoints, warnings
+
+
+def _parse_cmap12_or_13(
+    sub_data: bytes, fmt: int, glyph_count: int | None
+) -> tuple[set[int], list[str]]:
+    """Parse format 12/13, tolerating harmless trailing padding and truncation."""
+    if len(sub_data) < 16:
+        raise ValueError(f"format {fmt} subtable is shorter than its header")
+    declared_length = struct.unpack_from(">I", sub_data, 4)[0]
+    group_count = struct.unpack_from(">I", sub_data, 12)[0]
+    expected_length = 16 + group_count * 12
+    if declared_length < 16 or declared_length > len(sub_data):
+        raise ValueError(
+            f"format {fmt} invalid declared length {declared_length}, available {len(sub_data)}"
+        )
+    available_length = min(declared_length, len(sub_data))
+    complete_groups = max(0, (available_length - 16) // 12)
+    parse_groups = min(group_count, complete_groups)
+    if not parse_groups:
+        raise ValueError(f"format {fmt} has no complete mapping groups")
+
+    codepoints: set[int] = set()
+    warnings = []
+    if declared_length > expected_length:
+        warnings.append(
+            f"format {fmt} ignored {declared_length - expected_length} trailing padding bytes"
+        )
+    if declared_length < expected_length or parse_groups < group_count:
+        warnings.append(
+            f"format {fmt} recovered {parse_groups} of {group_count} mapping groups"
+        )
+
+    last_end = -1
+    for i in range(parse_groups):
+        start, end, start_glyph = struct.unpack_from(">LLL", sub_data, 16 + i * 12)
+        end = min(end, 0x10FFFF)
+        if start > end or start <= last_end:
+            warnings.append(f"format {fmt} skipped invalid/overlapping group {i}")
+            continue
+        last_end = end
+
+        if fmt == 13:
+            if start_glyph == 0 or (glyph_count is not None and start_glyph >= glyph_count):
+                continue
+            codepoints.update(range(start, end + 1))
+            continue
+
+        # Format 12 increments the glyph ID with the codepoint.
+        first_valid_cp = start
+        if start_glyph == 0:
+            first_valid_cp += 1
+        if glyph_count is not None:
+            if start_glyph >= glyph_count:
+                continue
+            end = min(end, start + (glyph_count - 1 - start_glyph))
+        if first_valid_cp <= end:
+            codepoints.update(range(first_valid_cp, end + 1))
+
+    return codepoints, warnings
+
+
+def _parse_simple_cmap(sub_data: bytes, fmt: int, glyph_count: int | None) -> tuple[set[int], list[str]]:
+    """Parse the compact Unicode cmap formats 0 and 6."""
+    if fmt == 0:
+        if len(sub_data) < 262:
+            raise ValueError("format 0 subtable is truncated")
+        gids = sub_data[6:262]
+        return {
+            cp for cp, gid in enumerate(gids)
+            if gid and (glyph_count is None or gid < glyph_count)
+        }, []
+    if fmt == 6:
+        if len(sub_data) < 10:
+            raise ValueError("format 6 subtable is shorter than its header")
+        first_code, entry_count = struct.unpack_from(">HH", sub_data, 6)
+        available = max(0, (len(sub_data) - 10) // 2)
+        count = min(entry_count, available)
+        gids = struct.unpack_from(f">{count}H", sub_data, 10) if count else ()
+        warnings = [] if count == entry_count else [
+            f"format 6 recovered {count} of {entry_count} glyph entries"
+        ]
+        return {
+            first_code + i for i, gid in enumerate(gids)
+            if gid and (glyph_count is None or gid < glyph_count)
+        }, warnings
+    raise ValueError(f"unsupported cmap format {fmt}")
+
+
+def _get_unicode_codepoints(font) -> tuple[set[int] | None, str, str]:
+    """Read Unicode cmap subtables independently so one broken subtable cannot hide others."""
+    try:
+        raw = font.reader["cmap"] if font.reader is not None else b""
+    except Exception as exc:
+        return None, "parse_error", f"cannot read cmap bytes: {type(exc).__name__}: {exc}"
+    if len(raw) < 4:
+        return None, "parse_error", "cmap table is missing or truncated"
+
+    try:
+        version, count = struct.unpack_from(">HH", raw, 0)
+        if version != 0:
+            return None, "parse_error", f"unsupported cmap table version {version}"
+        if 4 + count * 8 > len(raw):
+            return None, "parse_error", "cmap encoding-record directory is truncated"
+    except Exception as exc:
+        return None, "parse_error", f"invalid cmap header: {type(exc).__name__}: {exc}"
+
+    try:
+        glyph_count = int(font["maxp"].numGlyphs) if "maxp" in font else None
+    except Exception:
+        glyph_count = None
+
+    preference = {
+        (3, 10): 0, (0, 6): 1, (0, 4): 2, (3, 1): 3,
+        (0, 3): 4, (0, 2): 5, (0, 1): 6, (0, 0): 7,
+    }
+    entries = []
+    for i in range(count):
+        platform, encoding, offset = struct.unpack_from(">HHL", raw, 4 + i * 8)
+        if not (platform == 0 or (platform == 3 and encoding in (0, 1, 10))):
+            continue
+        if offset + 2 > len(raw):
+            continue
+        fmt = struct.unpack_from(">H", raw, offset)[0]
+        entries.append((preference.get((platform, encoding), 8), offset, fmt))
+
+    if not entries:
+        return None, "no_unicode_cmap", "no Unicode cmap subtables were found"
+
+    entries.sort(key=lambda item: item[0])
+    seen_offsets = set()
+    candidates = []
+    diagnostics = []
+
+    for rank, offset, fmt in entries:
+        if offset in seen_offsets:
+            continue
+        seen_offsets.add(offset)
+        try:
+            if fmt in (8, 10, 12, 13):
+                if offset + 8 > len(raw):
+                    raise ValueError("extended cmap header is truncated")
+                length = struct.unpack_from(">I", raw, offset + 4)[0]
+            elif fmt == 14:
+                continue  # Unicode variation selector table, not a base cmap.
+            else:
+                if offset + 4 > len(raw):
+                    raise ValueError("cmap subtable header is truncated")
+                length = struct.unpack_from(">H", raw, offset + 2)[0]
+            if length < 4 or offset + length > len(raw):
+                raise ValueError(
+                    f"invalid subtable bounds: offset={offset}, length={length}, cmap_size={len(raw)}"
+                )
+            sub_data = raw[offset:offset + length]
+
+            if fmt == 4:
+                codepoints, warnings = _parse_cmap4(sub_data, glyph_count)
+            elif fmt in (12, 13):
+                codepoints, warnings = _parse_cmap12_or_13(sub_data, fmt, glyph_count)
+            elif fmt in (0, 6):
+                codepoints, warnings = _parse_simple_cmap(sub_data, fmt, glyph_count)
+            else:
+                raise ValueError(f"unsupported Unicode cmap format {fmt}")
+
+            if warnings:
+                diagnostics.extend([f"format {fmt} @ {offset}: {item}" for item in warnings])
+            if codepoints:
+                candidates.append((rank, codepoints, fmt))
+        except Exception as exc:
+            diagnostics.append(
+                f"format {fmt} @ {offset}: {type(exc).__name__}: {exc}"
+            )
+
+    if not candidates:
+        detail = "; ".join(diagnostics) if diagnostics else "no usable Unicode cmap subtable"
+        return None, "parse_error", detail
+
+    # Choose the fullest successfully decoded Unicode map. Break ties by
+    # OpenType/libass-like platform preference ordering.
+    candidates.sort(key=lambda item: (-len(item[1]), item[0]))
+    chosen_rank, chosen, chosen_format = candidates[0]
+    status = "recovered" if diagnostics else "ok"
+    detail = "; ".join(diagnostics)
+    if not detail:
+        detail = f"decoded Unicode cmap format {chosen_format}"
+    else:
+        detail = f"selected format {chosen_format}; " + detail
+    return chosen, status, detail
+
+
 def _inspect_face(font, path: Path, root: Path, face_index: int | str) -> dict:
     table_errors = []
 
@@ -148,37 +396,23 @@ def _inspect_face(font, path: Path, root: Path, face_index: int | str) -> dict:
     }
     cmap_status = "unavailable"
     cmap_error = ""
-    try:
-        best_cmap = font.getBestCmap()
-        if best_cmap is None:
-            cmap_status = "no_unicode_cmap"
+    codepoints, cmap_status, cmap_error = _get_unicode_codepoints(font)
+    if codepoints is None:
+        if cmap_status == "no_unicode_cmap":
             coverage = {key: 0 for key in coverage}
-        else:
-            codepoints = set(best_cmap.keys())
-            coverage = {
-                "unicode_codepoints_count": len(codepoints),
-                "latin_basic_count": _count_range(codepoints, 0x0020, 0x007E),
-                "latin1_count": _count_range(codepoints, 0x00A0, 0x00FF),
-                "hiragana_count": _count_range(codepoints, 0x3040, 0x309F),
-                "katakana_count": _count_range(codepoints, 0x30A0, 0x30FF),
-                "cjk_basic_count": _count_range(codepoints, 0x4E00, 0x9FFF),
-                "cjk_ext_a_count": _count_range(codepoints, 0x3400, 0x4DBF),
-                "cjk_ext_b_count": _count_range(codepoints, 0x20000, 0x2A6DF),
-                "hangul_syllable_count": _count_range(codepoints, 0xAC00, 0xD7AF),
-                "bopomofo_count": _count_range(codepoints, 0x3100, 0x312F),
-            }
-            cmap_status = "ok"
-    except Exception as exc:
-        cmap_status = "parse_error"
-        cmap_error = f"{type(exc).__name__}: {exc}"
-        # ignoreDecompileErrors preserves malformed tables as DefaultTable and
-        # stores the original parser traceback in .ERROR. Prefer that detail.
-        try:
-            raw_cmap_error = getattr(font["cmap"], "ERROR", "")
-            if raw_cmap_error:
-                cmap_error = str(raw_cmap_error).strip()[-4000:]
-        except Exception:
-            pass
+    else:
+        coverage = {
+            "unicode_codepoints_count": len(codepoints),
+            "latin_basic_count": _count_range(codepoints, 0x0020, 0x007E),
+            "latin1_count": _count_range(codepoints, 0x00A0, 0x00FF),
+            "hiragana_count": _count_range(codepoints, 0x3040, 0x309F),
+            "katakana_count": _count_range(codepoints, 0x30A0, 0x30FF),
+            "cjk_basic_count": _count_range(codepoints, 0x4E00, 0x9FFF),
+            "cjk_ext_a_count": _count_range(codepoints, 0x3400, 0x4DBF),
+            "cjk_ext_b_count": _count_range(codepoints, 0x20000, 0x2A6DF),
+            "hangul_syllable_count": _count_range(codepoints, 0xAC00, 0xD7AF),
+            "bopomofo_count": _count_range(codepoints, 0x3100, 0x312F),
+        }
 
     axes = []
     try:
@@ -469,8 +703,11 @@ class FontInspectorApp:
                     # A bad cmap does not discard the face's recovered metadata.
                     for row in face_rows:
                         face_issues = []
-                        if row.get("cmap_status") == "parse_error":
-                            face_issues.append("cmap: " + row.get("cmap_error", "解析失败"))
+                        if row.get("cmap_status") in ("parse_error", "recovered"):
+                            face_issues.append(
+                                "cmap " + row.get("cmap_status") + ": "
+                                + row.get("cmap_error", "存在非标准或无法解析的子表")
+                            )
                         if row.get("table_errors"):
                             face_issues.append(row["table_errors"])
                         if face_issues:
@@ -507,7 +744,7 @@ class FontInspectorApp:
                     self.browse_button.configure(state="normal")
                     self.open_folder_button.configure(state="normal")
                     self.open_csv_button.configure(state="normal")
-                    self.status_var.set(f"完成：{file_count} 个文件，{face_count} 个字体面，{error_count} 个错误。")
+                    self.status_var.set(f"完成：{file_count} 个文件，{face_count} 个字体面，{error_count} 个解析问题/警告。")
                     self._log("\n扫描完成！")
                     self._log(f"CSV：{reports['csv']}")
                     self._log(f"JSON：{reports['json']}")
