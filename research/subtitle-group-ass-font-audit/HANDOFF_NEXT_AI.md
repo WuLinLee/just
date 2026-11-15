@@ -1,147 +1,107 @@
-# Handoff：字幕组 ASS 字体审计
+# Handoff：mpv 字体库存 × 字幕组 ASS 审计
 
-本文件让后续 AI 可以接手，而不用重新从头摸索背景。
+> 更新：2026-11-16。接手前先读仓库根目录的 `README.md`、`FONT_GAP_LIST.md` 和 `FONT_INVENTORY_AUDIT.md`。
 
 ## 用户目标
 
-用户正在整理 mpv 的动漫／日剧／电影字幕字体库，希望从实际字幕组的 ASS 文件反推高频主对白、注释、歌词、屏幕字及特效字体，先做 51 个文件的精选库，再按真实需求补充。
+用户维护 Windows/mpv 的动漫、日剧、电影外挂 ASS 字幕字体库，希望依据真实字幕组 ASS 的主对白、注释、歌词、标题、屏幕字及特效字体，整理 Core 与 Optional 精选包，并持续扩展字幕组样本。
 
-用户明确偏好：
-- 按字幕组交叉检查多部作品，不只看单个作品。
-- 分析真实 ASS，而不是只收集论坛“字体需求清单”。
-- 区分主对白与 OP/ED、标题、屏幕字、工作人员表和特效。
-- 结果写入本仓库的非 main 分支，便于其他 AI 延续。
+## 分支用途
 
-## 已完成的动作
+- `main`：字体扫描工具、原始全量库存、人工缺口清单、全量扫描报告。
+- `new`：同样的库存/缺口资料，加上本目录的字幕组 ASS 字体研究、样本与解析脚本。
+- 用户已明确授权本轮对 main 和 new 两个分支更新。
+- 不要上传商业字体二进制或未经授权的字幕文件。
 
-- 在 `WuLinLee/just` 的 `new` 分支创建本研究目录。
-- 收集并抽查多个公开仓库中的 ASS 文件，以及字幕组官方项目 README 字体清单。
-- 整理样本来源、字体名、样式角色、制作来源置信度和待核验项。
-- 本分支只提交文本／CSV／JSON／Markdown；没有上传商业字体或字幕二进制。
-- 没有修改 main 分支原有 README、FONT_GAP_LIST.md 或其他文件。
+## 最新的原始字体库基准
 
-## 最重要的当前事实
+根目录三份原始输出：
+- `font_inventory_20261112_151422.csv`
+- `font_inventory_20261112_151422.json`
+- `font_scan_errors_20261112_151422.txt`
 
-### A. 51 个精选字体文件的真实 manifest 未取得
+来自 `E:\mpv-lazy\font for mpv`，扫描时间 2026-11-12 15:14:22 +08:00，Font Name Inspector 1.2.0 / FontTools 4.68.0：
+- 1,061 个字体文件；
+- 1,695 个字体 face；
+- 1,435 个 cmap 正常；
+- 203 个 cmap recovered（涉及 75 个文件），是容错恢复日志，不是 203 个坏文件；
+- 57 个 face（45 个文件）没有 Unicode cmap；
+- 所有 face 的 name/OS2/head 等表读取错误为 0。
 
-之前用户运行的 PowerShell 输出：
-- 41 个 Core 文件
-- 10 个 Optional 文件
-- 共 51 个
-- Core 396.3 MB，Optional 266.2 MB，总计约 662.5 MB。
+旧 README 和旧缺口表写过 2026-11-10 的 613 项目录树；这是较早且不同口径的文件列表，不能当成 2026-11-12 扫描的记录数。
 
-对话摘要只保留了部分家族，例如方正兰亭黑／雅宋／圆体、SubSans/SubLan/SubSerif、部分 Fontworks/A-OTF、思源黑体／宋体和手写字体。**没有取得那 51 个文件的完整 manifest.csv、文件名和内部字体 name table。**
+## 40 个 ASS 候选与原始库存对照
 
-因此本目录中的差异只应称为“candidate gap / manifest check required”，不能称为已确认的逐文件缺失。
+对候选 ASS 名称、别名，及 Family/Subfamily/Full Name/PostScript/Typographic/WWS 与所有 name table 记录进行精确对照：
+- 31 项精确存在；
+- 8 项未检出；
+- Arial 1 项不在该文件夹，需先查 Windows 系统字体。
 
-### B. main 分支的旧 FONT_GAP_LIST 是不同的库存基准
+详细文件名、face index、内部名称、OS/2 Weight Class 和 cmap 状态：
+- `data/ass-font-inventory-comparison.csv`
+- 同步总表：`../../inventory/ass-font-inventory-comparison.csv`
 
-本仓库 main 分支中的 `FONT_GAP_LIST.md` 写明：根据另一份用户字体目录树，统计了 613 个文件条目（清单日期 2026-11-10）。那不是 51 文件精选包。不要用它代替 51 包 manifest。
+精确未检出的 8 项：
+1. 森泽UD新黑 Gb4 R（同族 M 已有）
+2. 方正胖娃_GBK
+3. FOT-CookHand Std R
+4. FOT-UDMarugo_Large Pr6N E（同族 B 已有）
+5. A-OTF Kocho Std Heavy
+6. Kozuka Mincho Pr6N M（其他 Kozuka Mincho 系列/字重在目录）
+7. Kozuka Gothic Pro R（其他系列/字重在目录）
+8. FA 隷書Ｍ
 
-### C. 归属不能看压制包名猜
+不要重复下载：Dream Han Sans SC/J W20、Dream Han Serif SC/J W14、华康圆体W7-A、华康方圆体W7(P)、华康翩翩体W5-A/W3-A、森泽UD新黑 Gb4 M、A-OTF UD Shin Go Pr6N M、汉仪正圆75/85S、汉仪玄宋75S、思源黑体SC/TC Medium、思源宋体SC/TC SemiBold 等，见 31 个 PRESENT 项。
 
-本轮发现：
-- Endro ASS 明确写轻之国度字幕组制作。
-- Kakegurui SP01 ASS 明确写悠哈璃羽字幕社制作。
-- Nekopara Today's Neko08 ASS 注释明确写千夏字幕组制作。
-- NGNL SP05 `Original Script` 字段明确写 SumiSora。
-- Kuzu no Honkai 同时出现 `Original Script: 漫游字幕组` 和 UHA-WINGS 文件后缀，应标记混合来源。
-- VCB-Studio 是发布/压制标记，不能直接作为所有 ASS 字体方案的创作者。
+## 51 文件 Core/Optional 精选包仍未完成差集
 
-## 当前可优先继续研究的字幕组和样本
+之前用户 PowerShell 报告：
+- Core 41 个文件；
+- Optional 10 个文件；
+- 共 51 个；
+- Core 396.3 MB、Optional 266.2 MB，总计 662.5 MB。
 
-1. **Nekomoe kissaten**：官方 Storage 仓库有多系列 ASS 和 README。可从犬与猫、Touhai、ODDTAXI、WEP、Doremi、Non Non Biyori、Yuru Camp、Wistoria 等项目扩样。
-2. **SweetSub**：官方仓库有多集 ASS。Sarazanmai 可用作思源黑体/宋体 SC/TC 重复样本；Koori no Jouheki 可用作 Dream Han 主对白样本。
-3. **MingYSub**：官方 SubtitlesArchive 仓库有 Bocchi、Skip to Loafer、Machikado Mazoku、Painoko、Dorama DIY、mono 等项目。可以区分主对白与歌声字幕。
-4. **KitaujiSub**：官方仓库有 Bocchi 多集 ASS；本轮主要确认 OP/ED/标题字体重复，主对白样式还需要完整解析。
-5. **轻之国度**：Endro 多集 ASS 可用于跨集比较兰亭中黑主对白和不同标题字。
-6. **千夏/Airota**：Nekopara 特典实际 ASS 区分华康圆体主对白、圆方体标题／中文歌词与 DFPMaruMoji 日文歌词。
-7. **UHA-WINGS**：Kakegurui 和 Kuzu no Honkai 样本需注意不同源头及后期署名。
-8. **LoliHouse**：本轮只有 Revue Starlight Movie 代表性 ASS，需再找其多个 TV/BD 作品后再归纳组级规律。
-9. **KTXP**：Plastic Memories 样本是 KTXP&VCB 合作文件，需找到明确字幕制作署名或官方原始字幕。
+但最终 `manifest.csv` 尚未收到。因此 31/8 结果只针对原始 1,061 文件目录，不可推断 51 精选包内的存在/缺失。后续拿到 manifest 后，需分别核对 Core 与 Optional 的文件名、内部名称、字重、TTC face 与 cmap。
 
-## 下一步（按顺序执行）
+## cmap 质量提示
 
-### 1. 取得用户 51 包 manifest
+- 203 条 recovered cmap 记录并非不可读取字体；详见 `../../inventory/recovered-cmap-faces.csv`。
+- 57 条 no-Unicode-cmap face 即使内部名字可读取，也可能依赖旧编码；详见 `../../inventory/no-unicode-cmap-faces.csv`。
+- 不模拟 Windows DirectWrite 或 mpv/libass，必须真实播放检查 fallback、地区字形和缺字。
 
-让用户上传：
-`mpv-subtitle-fonts-compact/manifest.csv`
+## ASS 样本与归属
 
-如目录仍保留，可另提供：
-- `01_Core` 文件名列表
-- `02_Optional_Fallback_and_Handwriting` 文件名列表
+研究覆盖 Nekomoe kissaten、SweetSub、MingYSub、KitaujiSub、轻之国度、千夏/Airota、UHA-WINGS、LoliHouse、KTXP/VCB、SumiSora 等。重要规则：
+- ASS 注释/Original Script/制作署名优先于压制文件名前缀。
+- VCB-Studio 常是压制/发布标记，不能直接当作字幕制作组。
+- 不把一个 ASS 内全部 Style 字体都算成主对白字体；需要看实际 Dialogue 使用、行内 `\fn`、重置 `\r`、注释事件和内嵌字体。
+- OP/ED、标题、Staff、屏幕字与正片对白分开分类。
 
-不要让用户重新运行整个脚本或重新生成字体包。只要现成 manifest 即可。
+## 仓库工具文件已检查
 
-### 2. 读取字体内部信息
+- `tools/font_name_inspector.py`：读取字体内部名称、TTC face、字重、cmap 和所有 name records。
+- `tools/README_免安装使用.md`：工具输出与状态解释。
+- `tools/tests/test_cmap_recovery.py`：cmap format4/12/13 容错测试。
+- `.github/workflows/build-font-inspector.yml`：Windows 云端构建与测试/release。
+- `research/.../scripts/ass_font_audit.py`：标准库 ASS/SSA 静态提取。
+- `research/.../tests/test_ass_font_audit.py`：ASS 解析最小测试。
 
-使用仓库现有 FontNameInspector，重点读取：
-- Family
-- Subfamily
-- Full Name
-- PostScript Name
-- Typographic Family/Subfamily
-- WWS Family/Subfamily
-- OS/2 Weight Class
-- TTC face index
-- cmap 覆盖
+注意：本轮未实际运行 Python 单测，也未在用户 mpv 中播放，不能宣称测试通过。
 
-尤其核验：
-- Dream Han Sans/Serif 是否真的不存在；
-- MO UDShinGo SC Gb4 M 是否与现有 A-OTF 或其他名称字体混淆；
-- 华康圆体、华康方圆体、翩翩体具体版本和字重；
-- 汉仪玄宋/正圆具体字重；
-- 方正兰亭圆 DB / DB1，方正少儿、胖娃、喵呜等具体内部名称。
+## 下一步优先级
 
-### 3. 使用批量解析脚本并扩大样本
-
-先运行 `scripts/ass_font_audit.py` 生成初始 CSV/JSON，再人工检查它识别的 active Dialogue styles、行内 `\\fn` 和重置标签。可用 `python -m unittest discover -s tests` 运行最小测试。
-
-对每组至少抽取三部作品／多集 ASS：
-
-建议优先扩充 Nekomoe、SweetSub、MingYSub、Kitauji、轻之国度、千夏和 UHA-WINGS。每份 ASS：
-- 保存 source URL；
-- 不要把原始字幕二进制提交到仓库；
-- 只保存必要的解析结果；
-- 记录是否嵌入字体；
-- 按使用的 Dialogue events 分类字体。
-
-### 4. 产生精确差集
-
-建议结果分成：
-- confirmed-present
-- confirmed-missing
-- family-related-but-not-equivalent
-- alias/internal-name-uncertain
-- system-font-or-fallback
-- embedded-in-subtitle
-- project-specific-not-core
-
-只把跨多个作品实际承担主对白的字体优先放进 Core。歌词/标题/特效字体放 Optional。
-
-### 5. mpv 实机测试
-
-用户此前还没有确认已修改 mpv.conf。不要声称已经加载 01_Core。测试时记录：
-- `sub-fonts-dir`
-- mpv 与 libass 版本
-- ASS 源
-- 字体内部名称匹配结果
-- CJK 字符缺字情况
-- 实际截图或日志
-
-## 来源许可和数据清理
-
-- 字幕组 README 里写出字体名称，不等于字体可再分发。
-- 本仓库只提交研究结果、来源 URL 和工具，不应上传商业字体二进制。
-- 各字幕组字幕也有各自的署名／转载条款；不要把 ASS 全文镜像到本仓库。
-- 第三方聚合仓库用于检索的样本应明确标记来源，不要冒充官方字幕组仓库。
+1. 让用户提供 51 文件包现有 `manifest.csv`，做 Core/Optional 精确差集。
+2. 对 57 个 no-Unicode cmap face，检查 legacy encoding、Unicode 映射与实机 mpv/libass 表现。
+3. 对 203 个 recovered cmap 面抽查重要 CJK 字符覆盖，尤其注意损坏段跳过是否导致缺字。
+4. 扩充同一字幕组跨作品 ASS，优先主对白证据，不只收歌词/标题。
+5. 真实播放验证时记录 mpv/libass 版本、`sub-fonts-dir`、字幕来源、字体加载日志和截图。
 
 ## 文件导航
 
-- `data/ass-samples.csv`：实际样本与来源
-- `data/font-candidates.csv`：字体候选、角色、优先级和核验状态
-- `data/group-font-evidence.json`：供后续 AI 直接读取的结构化摘要
-- `docs/ass-font-audit-method.md`：提取方法与判断规则
-- `scripts/ass_font_audit.py`：Python标准库批量抽取器
+- `data/ass-samples.csv`：34 个公开 ASS 样本与来源
+- `data/font-candidates.csv`：40 项 ASS 候选及 1,061 库存状态
+- `data/ass-font-inventory-comparison.csv`：逐条文件/face/内部名称比对
+- `data/group-font-evidence.json`：字幕组/作品结构化观察
+- `docs/ass-font-audit-method.md`：ASS 分析判断方法
+- `scripts/ass_font_audit.py`：ASS/SSA 批量静态提取器
 - `tests/test_ass_font_audit.py`：最小解析测试
-- `README.md`：研究目录总览
