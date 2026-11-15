@@ -53,9 +53,9 @@
 ### 1. 梦源黑体／梦源宋体：不要整套重下
 
 原始库中：
-- Dream Han Sans：27 个 TTC 字重文件，SC/TC/HC/J/K 多地区 face 齐全；ASS 用到的 **SC W20、J W20 已有**。
-- Dream Han Serif：27 个 TTC 字重文件，SC/TC/HC/J/K 多地区 face 齐全；ASS 用到的 **SC W14、J W14 已有**。
-- Sans 当前见到 W1–W27 中除 W12、W22 以外的字重；Serif 当前见到 W1–W27 中除 W7、W20 以外的字重。
+- Dream Han Sans：W1–W27 共 27 个 TTC 字重文件，SC/TC/HC/J/K 多地区 face 齐全；ASS 用到的 **SC W20、J W20 已有**。
+- Dream Han Serif：W1–W27 共 27 个 TTC 字重文件，SC/TC/HC/J/K 多地区 face 齐全；ASS 用到的 **SC W14、J W14 已有**。
+- 注意：W12/W22（Sans）和 W7/W20（Serif）的部分 face，其 Family 字段省略了字重后缀，但 Full Name / PostScript Name 保留完整字重名称。不能仅凭 Family 列认为这些字重缺失。
 
 ### 2. 已有的开源/圆体/手写系列
 
