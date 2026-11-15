@@ -1,31 +1,47 @@
-## Windows 免安装字体扫描工具（已云编译）
+## Windows 免安装字体扫描工具
 
-- **[下载 FontNameInspector-Portable.zip](https://github.com/WuLinLee/just/releases/download/windows-portable-latest/FontNameInspector-Portable.zip)**：解压后双击 EXE 即可使用；无需在本机安装 Python、pip 或 FontTools。
+- **[下载 FontNameInspector-Portable.zip](https://github.com/WuLinLee/just/releases/download/windows-portable-latest/FontNameInspector-Portable.zip)**：解压后双击 EXE。
 - [直接下载 EXE](https://github.com/WuLinLee/just/releases/download/windows-portable-latest/FontNameInspector.exe)
-- [查看云编译结果](https://github.com/WuLinLee/just/actions/runs/43162222972)
+- [云编译结果](https://github.com/WuLinLee/just/actions/runs/43162222972)
 - [工具使用说明](./tools/README_免安装使用.md)
 
-# mpv / ACG 字幕字体缺口清单
+# mpv / ACG 字幕字体库存与缺口
 
-本仓库用于记录对照你上传的 `E:\\mpv-lazy\\font for mpv` 字体目录后，值得补充的动漫／影视字幕字体。
+本仓库记录 `E:\mpv-lazy\font for mpv` 原始字体目录的内部名称扫描、字幕组 ASS 字体证据和建议补充项。
 
-## 先看这里
+## 当前库存基准
 
-- [打开完整缺失清单：FONT_GAP_LIST.md](./FONT_GAP_LIST.md)
-- [UDDigiKyokashoN-R.ttc：微软官方获取方式与授权说明](./UDDigiKyokashoN-R.md)
-- 清点基准：你提供的目录树，共 **613 个文件条目**，扫描错误 **0**。
-- 对照方法：按目录中的文件名与字幕组公开字体需求逐项比对；对缩写名、TTC 集合字体和内部 PostScript 名称无法仅凭文件名确认的项目，已标为“待核验”，没有擅自算作确定缺失。
-- 当前仓库**只提交了字体名称、差异说明、社区来源和官方获取链接，没有提交字体二进制文件**。商业字体不能在没有再分发授权的情况下镜像；开源字体也必须连同许可证和版权声明分发。本次提交渠道未能将上游二进制字体文件安全转存到本仓库，因此开源字体请从清单中的作者官方仓库／Release 获取。
+最新完整扫描来自 **2026-11-12 15:14 (+08:00)**，不是旧清单里的 613 项目录树：
 
-## 比对结论
+- **1,061 个字体文件**
+- **1,695 个字体 face**（TTC/OTC 每个内嵌 face 单独计数）
+- 1,435 个 cmap 正常；203 个 cmap 容错恢复；57 个 face 无 Unicode cmap 子表
+- 203 条 TXT 日志均为 cmap 恢复诊断，不是 203 个完全读取失败的字体；name/OS2/head 表错误为 0。
 
-你现有的基础字库已经很充足：方正、华康、日文字体、思源黑体／宋体、更纱黑体都有相当多的版本。最值得新增的不是重复下载普通黑体，而是：
+详细报告：[FONT_INVENTORY_AUDIT.md](./FONT_INVENTORY_AUDIT.md)。原始数据：[CSV](./font_inventory_20261112_151422.csv) · [JSON](./font_inventory_20261112_151422.json) · [扫描日志](./font_scan_errors_20261112_151422.txt)。
 
-1. **梦源黑体／梦源宋体**的多级字重（SC／TC／J），这是近年字幕清单中很明显的一块缺口。
-2. **獅尾圓體、Resource Han Rounded**等不同圆体家族。
-3. **霞鹜文楷、霞鹜漫黑、霞鹜臻楷、小赖、悠哉、得意黑、朱雀仿宋**等与现有方正／华康字体风格不同的开源字型。
-4. 已有字体家族中缺少的特定字重或特殊款，例如 FOT、A-OTF、汉仪正圆，以及部分方正字体。
+## 现在到底还缺什么？
 
-## 重要提醒
+已将 40 个公开 ASS 字体候选按字体内部名称与原始库存逐项对照：**31 项精确存在、8 项未检出、Arial 1 项需检查 Windows 系统字体**。
 
-社区字幕清单代表“作品字幕实际引用过”，不等于所有字体都免费或允许公开再分发。请优先从作者／字库厂商的官方渠道获取，并按各字体许可证使用。
+- [最新缺口总表](./FONT_GAP_LIST.md)
+- [ASS × 库存逐条匹配 CSV](./inventory/ass-font-inventory-comparison.csv)
+- [无 Unicode cmap 的 57 个 face](./inventory/no-unicode-cmap-faces.csv)
+- [203 个 cmap 恢复记录](./inventory/recovered-cmap-faces.csv)
+- [UD Digi Kyokasho N-R 官方安装与授权说明](./UDDigiKyokashoN-R.md)
+
+优先核对项：森泽UD新黑 Gb4 R；随后是方正胖娃、FOT-CookHand Std R、FOT-UDMarugo Large Pr6N E；Kocho/Kozuka/FA 隷書属于低频标题或画面字。具体用途和状态见缺口清单。
+
+## 重要口径：别把三个库存混为一谈
+
+1. **1,061 文件 / 1,695 face**：2026-11-12 原始 `font for mpv` 目录扫描。
+2. **613 项目录树**：2026-11-10 的较早文件名清单，不能替代最新内部名称扫描。
+3. **51 文件精选包**：此前输出 41 Core + 10 Optional；最终 manifest 尚未进入仓库，所以尚未完成精选包级别的差集。
+
+## ASS 字幕组研究
+
+多字幕组公开 ASS 的样本、角色分析和提取脚本在 [new 分支研究目录](https://github.com/WuLinLee/just/tree/new/research/subtitle-group-ass-font-audit)。其中区分主对白与 OP/ED、标题、Staff、屏幕字，不把 VCB 发布标记直接当作字幕制作组。
+
+## 授权与文件
+
+本仓库只保存工具、字体名称、扫描元数据、来源链接和研究结果。**不上传商业字体二进制或未经授权的字幕文件**。开源字体也需遵守各自许可证和版权声明。
