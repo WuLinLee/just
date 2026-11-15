@@ -6,7 +6,7 @@
   "branch": "new",
   "caveat": [
     "51-file compact mpv font package has not been compared file-by-file; original manifest.csv was not supplied to this audit.",
-    "The repository main branch FONT_GAP_LIST.md references a separate 613-entry inventory dated 2026-11-10; do not conflate it with the 51-file compact package.",
+    "Current FONT_GAP_LIST.md uses the 2026-11-12 inventory snapshot; 613 entries refer to the historical 2026-11-10 directory-tree baseline. Neither is the 51-file package.",
     "A font name in an ASS style is not proof the style is used by any Dialogue event. Inline \\fn and \\r overrides must be parsed.",
     "No mpv/libass real playback verification was performed.",
     "Do not infer subtitle-team authorship from a VCB-Studio release tag alone."
@@ -95,11 +95,36 @@
     }
   ],
   "next_steps": [
-    "Obtain the 51-font compact package manifest.csv from the user.",
+    "Check whether the existing 51-file package manifest is already available before requesting anything from the user.",
     "Use FontNameInspector outputs (family, full name, PostScript name, typographic family, subfamily, weight class, TTC face index) for exact matching.",
     "Bulk parse multiple ASS files per group: styles, dialogue style references, \\fn overrides, \\r resets, and embedded Fonts sections.",
     "Separate active dialogue styles from unused styles, titles, OP/ED, staff credits, and screen translations.",
     "Check whether MKV/MKS has embedded fonts before treating a local font as required.",
     "Verify with real mpv/libass playback and actual character coverage."
-  ]
+  ],
+  "inventory_crosscheck": {
+    "font_file_count": 1061,
+    "font_face_count": 1695,
+    "csv_rows": 1695,
+    "json_records": 1695,
+    "fields_per_record": 33,
+    "csv_json_values_match": true,
+    "cmap_ok": 1435,
+    "cmap_recovered": 203,
+    "cmap_recovered_files": 75,
+    "no_unicode_cmap_faces": 57,
+    "no_unicode_cmap_files": 45,
+    "name_os2_head_table_errors": 0,
+    "ass_candidate_count": 40,
+    "exact_matches": 31,
+    "exact_not_found": 8,
+    "system_font_check": 1,
+    "normalized_status_counts": {
+      "owned": 31,
+      "partial": 5,
+      "missing": 3,
+      "uncertain": 1
+    },
+    "scope": "raw 1,061-file folder only, not 51-file compact package"
+  }
 }
