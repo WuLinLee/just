@@ -45,3 +45,13 @@
 ## 授权与文件
 
 本仓库只保存工具、字体名称、扫描元数据、来源链接和研究结果。**不上传商业字体二进制或未经授权的字幕文件**。开源字体也需遵守各自许可证和版权声明。
+
+## ASS 字幕组研究资料（new 分支）
+
+- [研究总览](./research/subtitle-group-ass-font-audit/README.md)
+- [34 个 ASS 样本来源](./research/subtitle-group-ass-font-audit/data/ass-samples.csv)
+- [40 项 ASS 候选字体及库存状态](./research/subtitle-group-ass-font-audit/data/font-candidates.csv)
+- [ASS 字体 × 原始库存逐项对照](./research/subtitle-group-ass-font-audit/data/ass-font-inventory-comparison.csv)
+- [交接给下一位 AI](./research/subtitle-group-ass-font-audit/HANDOFF_NEXT_AI.md)
+
+当前 ASS 对照针对原始 1,061 文件库；51 文件 Core/Optional 精选包仍待 manifest。
