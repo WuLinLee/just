@@ -13,6 +13,15 @@
 
 ## 2. 提取顺序
 
+本目录提供了一个 Python 标准库脚本 `scripts/ass_font_audit.py`，可先批量生成初始 JSON/CSV：
+
+```bash
+python scripts/ass_font_audit.py --input /path/to/ass-folder
+python -m unittest discover -s tests
+```
+
+脚本仅为第一轮静态提取器；涉及转义、复杂变换标签、字体回退和容器附件时仍需要人工或更完整的 ASS/libass 工具核验。
+
 1. 解析 `[Script Info]`，记录 Title、Original Script、Original Translation、Original Editing、Original Timing、视频/项目分辨率。
 2. 解析 `[V4+ Styles]` 或旧版 `[V4 Styles]` 的 Format 和 Style 行。按 Format 字段映射，不要假设 Fontname 总是固定列索引。
 3. 解析 `[Events]`，建立每条 Dialogue 的 Style、Layer、Start/End、Comment 状态和 Text。
