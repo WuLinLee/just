@@ -29,3 +29,18 @@
 ## 重要提醒
 
 社区字幕清单代表“作品字幕实际引用过”，不等于所有字体都免费或允许公开再分发。请优先从作者／字库厂商的官方渠道获取，并按各字体许可证使用。
+
+---
+
+## ASS 字幕组字体审计（2026-11-16）
+
+本分支新增多字幕组公开 ASS 字体研究资料，供后续 AI 接手扩展：
+
+- [研究总览与结论](./research/subtitle-group-ass-font-audit/README.md)
+- [ASS／作品样本和来源链接（34条）](./research/subtitle-group-ass-font-audit/data/ass-samples.csv)
+- [字体候选／优先级／核验状态（40条）](./research/subtitle-group-ass-font-audit/data/font-candidates.csv)
+- [结构化证据 JSON](./research/subtitle-group-ass-font-audit/data/group-font-evidence.json)
+- [ASS 批量字体提取脚本](./research/subtitle-group-ass-font-audit/scripts/ass_font_audit.py)
+- [交接给下一位 AI](./research/subtitle-group-ass-font-audit/HANDOFF_NEXT_AI.md)
+
+注意：这份公开 ASS 抽样研究尚未与用户 51 文件精选包的完整 manifest 做逐文件差集；本仓库原有 `FONT_GAP_LIST.md` 是另一份 613 项库存基准，两者不可混用。本研究没有上传商业字体或字幕二进制文件。
