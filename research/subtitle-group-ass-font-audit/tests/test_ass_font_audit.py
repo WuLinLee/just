@@ -19,7 +19,7 @@ Style: Unused,Unused Face,30
 
 [Events]
 Format: Layer, Start, End, Style, Text
-Dialogue: 0,0:00:01.00,0:00:02.00,Default,{\\fnInline Script Face}Hello
+Dialogue: 0,0:00:01.00,0:00:02.00,Default,{\fnInline Script Face}Hello
 Dialogue: 0,0:00:03.00,0:00:04.00,Default,Normal dialogue
 Comment: 0,0:00:04.00,0:00:05.00,OP,ignored comment
 """
