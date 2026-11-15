@@ -31,8 +31,8 @@
     {
       "group": "MingYSub",
       "evidence": [
-        "Painoko ED uses MO UDShinGo SC Gb4 M, HanziPen W5-A, FOT-CookHand Std R",
-        "Machikado Mazoku 2-Choume Akeome/Momo uses MO UDShinGo SC Gb4 M and A-OTF UD Shin Go Pr6N M"
+        "Painoko ED 文件定义了 MO UDShinGo SC Gb4 M 的 CN style，但所见 ED Dialogue 事件使用 EDCN/EDJP；不能仅凭定义认定ED实际用它",
+        "Machikado Mazoku 2-Choume Akeome/Momo ASS 的 CN style 明确使用 MO UDShinGo SC Gb4 M，JP style 使用 A-OTF UD Shin Go Pr6N M"
       ],
       "interpretation": "森泽UD新黑 appears as a CN style repeatedly, while handwritten fonts in the Painoko sample are song styles."
     },
