@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "audit_date": "2026-11-16",
+  "audit_status": "public_ass_sample_audit_not_a_complete_corpus_scan",
+  "repo": "WuLinLee/just",
+  "branch": "new",
+  "caveat": [
+    "51-file compact mpv font package has not been compared file-by-file; original manifest.csv was not supplied to this audit.",
+    "The repository main branch FONT_GAP_LIST.md references a separate 613-entry inventory dated 2026-11-10; do not conflate it with the 51-file compact package.",
+    "A font name in an ASS style is not proof the style is used by any Dialogue event. Inline \\fn and \\r overrides must be parsed.",
+    "No mpv/libass real playback verification was performed.",
+    "Do not infer subtitle-team authorship from a VCB-Studio release tag alone."
+  ],
+  "confirmed_group_patterns": [
+    {
+      "group": "Nekomoekissaten",
+      "evidence": [
+        "Inu to Neko EP04/12 uses FZZhunYuan-M02",
+        "Touhai EP01/11 uses FZLanTingYuan-DB-GBK for Default and HYXuanSong 75S for Staff"
+      ],
+      "interpretation": "Recurring foundations exist, but different series use different fonts; project README font lists are broader project requirements, not proof all are used for dialogue."
+    },
+    {
+      "group": "SweetSub",
+      "evidence": [
+        "Sarazanmai preview scripts repeatedly use Source Han Sans SC/TC Medium and Source Han Serif SC/TC SemiBold",
+        "Koori no Jouheki EP16 uses Dream Han Sans SC/J W20 and Dream Han Serif SC/J W14"
+      ],
+      "interpretation": "The specific Dream Han fonts can be used for main CN/JP dialogue styles, so they are not merely decorative additions."
+    },
+    {
+      "group": "MingYSub",
+      "evidence": [
+        "Painoko ED uses MO UDShinGo SC Gb4 M, HanziPen W5-A, FOT-CookHand Std R",
+        "Machikado Mazoku 2-Choume Akeome/Momo uses MO UDShinGo SC Gb4 M and A-OTF UD Shin Go Pr6N M"
+      ],
+      "interpretation": "森泽UD新黑 appears as a CN style repeatedly, while handwritten fonts in the Painoko sample are song styles."
+    },
+    {
+      "group": "Keinokuni / 轻之国度",
+      "evidence": [
+        "Endro EP01 and subsequent episodes repeat FZLanTingHei-DB-GBK for Default/Annotation/Staff; Screen uses Arial; Title uses FZShaoEr-M11 and FZ PangWa"
+      ],
+      "interpretation": "A recurring dialogue font with separate title-font requirements."
+    },
+    {
+      "group": "KitaujiSub",
+      "evidence": [
+        "Bocchi the Rock EP01-03 use FZKaTong-M19 for ED-CN, Aunt-香堇体 for ED-JP and FZMiaoWu for OP Title"
+      ],
+      "interpretation": "Verified cross-episode recurrence is primarily OP/ED/title styles in the examined evidence; do not present as the dialogue default."
+    },
+    {
+      "group": "Airota / 千夏",
+      "evidence": [
+        "Nekopara Today's Neko08 notes production by 千夏; Default/Upper use 华康圆体W7-A, OP/ED JP use DFPMaruMoji-W7, OP/ED CN/title use 华康方圆体W7(P)"
+      ],
+      "interpretation": "Main dialogue and lyric/title fonts are distinct."
+    },
+    {
+      "group": "UHA-WINGS / 悠哈璃羽",
+      "evidence": [
+        "Kakegurui SP01 explicitly credits UHA-WINGS; dialogue style is 方正楷体_GBK; menu style uses 华康少女文字W5"
+      ],
+      "interpretation": "The dialogue style and a menu-only decorative font must be recorded separately."
+    },
+    {
+      "group": "LoliHouse",
+      "evidence": [
+        "Revue Starlight film ASS uses 思源黑体 Bold in dialogue/annotation styles, Source Han Serif Bold for JP lyrics, 思源宋体 Bold for CN lyrics/title, FZSongHei for end notes"
+      ],
+      "interpretation": "One film sample is not enough to declare a permanent group-wide default."
+    }
+  ],
+  "mixed_or_uncertain_attribution": [
+    {
+      "tag": "KTXP&VCB",
+      "work": "Plastic Memories EP05",
+      "note": "The release filename is collaborative; styles include 方正小标宋_GBK, 方正书宋_GBK, HGMaruGothicMPRO and zhunyuan alias. The exact subtitle author was not independently confirmed."
+    },
+    {
+      "tag": "DHR",
+      "work": "Danshi Kokosei no Nichijou SP02",
+      "note": "The ASS filename suffix is .DHR; the reviewed excerpt did not establish a production credit. Treat fonts as sample evidence only, not definitive DHR style policy."
+    },
+    {
+      "tag": "漫游／UHA-WINGS",
+      "work": "Kuzu no Honkai EP05",
+      "note": "ASS Original Script says 漫游字幕组 and path suffix is UHA-WINGS. Fonts are attributable to this mixed source/post-production file, not safely to one group alone."
+    },
+    {
+      "tag": "VCB-Studio",
+      "work": "Endro / Kakegurui / other packs",
+      "note": "The release tag is a publisher/encoder tag in these examples. Read internal ASS production credits before assigning styles to a subtitle team."
+    }
+  ],
+  "next_steps": [
+    "Obtain the 51-font compact package manifest.csv from the user.",
+    "Use FontNameInspector outputs (family, full name, PostScript name, typographic family, subfamily, weight class, TTC face index) for exact matching.",
+    "Bulk parse multiple ASS files per group: styles, dialogue style references, \\fn overrides, \\r resets, and embedded Fonts sections.",
+    "Separate active dialogue styles from unused styles, titles, OP/ED, staff credits, and screen translations.",
+    "Check whether MKV/MKS has embedded fonts before treating a local font as required.",
+    "Verify with real mpv/libass playback and actual character coverage."
+  ]
+}
