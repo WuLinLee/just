@@ -20,7 +20,7 @@
 
 - font_inventory_时间戳.csv：Excel 可打开，使用 UTF-8 BOM 编码。
 - font_inventory_时间戳.json：完整结构化数据。
-- font_scan_errors_时间戳.txt：仅在有无法读取的字体时生成。
+- font_scan_errors_时间戳.txt：在出现 cmap 恢复诊断或真正读取错误时生成；其中包含 recovered cmap 警告，并不等于每条记录都是不可读取的字体。请结合 JSON 的 errors、records.cmap_status 与 table_errors 区分。
 
 如果目标目录没有写入权限，结果会保存到“文档\FontNameInspector”。
 
@@ -28,7 +28,7 @@
 
 - TTF / OTF / TTC / OTC 字体文件；会检查文件头，因此扩展名为 .TTF 的实际 TTC 集合也能识别。
 - 对旧式字体的非标准 cmap 表采用容错读取：逐个解析 Unicode cmap 子表，跳过损坏的 format 4 段；对 format 12/13 忽略超出组数据的尾随填充字节。尽量恢复字符覆盖；仍无法恢复时，在 CSV 标注 cmap_status / cmap_error，而不是将覆盖数误写为 0。
-- cmap_status 为 ok 表示正常解析，recovered 表示跳过／修复非标准子表后恢复了字符覆盖，parse_error 表示仍无法解析。
+- cmap_status 为 ok 表示正常解析，recovered 表示跳过／修复非标准子表后恢复了字符覆盖，parse_error 表示仍无法解析；no_unicode_cmap 表示没有发现 Unicode cmap 子表，字体名字可能仍能读取，但 Unicode 文本映射需要额外验证。
 - 每个 TTC / OTC 内的每一个字体面（face index）。
 - Family、Subfamily、Full Name、PostScript Name。
 - Typographic Family / Subfamily、WWS Family / Subfamily。
@@ -42,6 +42,7 @@
 - 不会模拟 Windows DirectWrite 或 libass 的完整字体匹配算法；最终仍应使用 mpv 播放真实 ASS 样本验证。
 - 默认递归扫描普通子目录，不跟随目录符号链接，以避免循环扫描。
 - 输出文件：CSV（Excel 字体清单）、JSON（完整元数据）、TXT（存在读取错误时生成的错误记录）。
+- TXT 日志条数/error_count 统计的是解析问题与警告；recovered cmap 也会计入。请不要直接把 error_count 解释成坏文件数量。真正的表读取问题另见每条 record 的 table_errors。
 - 只读取字体，不会安装、修改或删除字体文件。
 
 ## 构建方式
