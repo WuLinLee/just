@@ -1,223 +1,197 @@
-# 字体缺口清单（按你上传的 613 项目录比对）
+# mpv / ACG 字幕字体：基于完整内部名称扫描的缺口清单
 
-> 清单日期：2026-11-10  
-> 比对基准：你上传的 `E:\\mpv-lazy\\font for mpv` 目录树（613 个文件条目，扫描错误 0）。  
-> 说明：本清单按“目录中可见文件名”对照 ACG 字幕论坛公开的作品字体表。部分 `.ttc` 文件可能包含多个内部字体名；遇到缩写文件名、内部 PostScript 名称或集合字体时，标为“待核验”，不把它冒充成已确认缺失。
+> **最新可用库存快照：2026-11-12 15:14（+08:00）**
+> 原始目录：`E:\mpv-lazy\font for mpv`
+> **1,061 个字体文件、1,695 个字体 face**。本表已从旧的“613 项目录树文件名初筛”升级为对照字体内部名称的结果。
 
-## 结论先说
+## 先看结论
 
-你已经有很多常用基础字体和字库：方正兰亭黑／兰亭圆／雅宋等多个字重、华康少女文字／翩翩体／手札体／娃娃体／布丁体／海报体等、思源黑体和思源宋体、更纱黑体 SC／TC／J、多款 FOT 日文字体。
+你原始 `font for mpv` 文件夹的字体库比旧清单显示的更齐全。旧清单里不少项目只是文件名不明显，实际存在于 TTC 的某个 face，或存在于字体内部英文/日文名称记录里。
 
-因此，**不要再下载普通宋体、普通黑体、普通楷体、思源黑体、思源宋体、更纱黑体的整套重复包**。这次最值得补的是梦源字体多字重、獅尾圓體、几种开源手写／漫画字体，以及字幕组清单明确出现但目录未见同名文件的特定字重。
+对 40 个已研究 ASS 字体候选，当前原始库存中：
+- **31 项找到精确内部名称**，无需重复下载。
+- **8 项未检出精确名称**，其中有些只是同一家族缺某一字重／系列。
+- **Arial 1 项不在该文件夹**，但应先检查 Windows 系统字体。
+
+完整可筛选的对照表：[ASS 字体 × 原始库存匹配 CSV](inventory/ass-font-inventory-comparison.csv)。扫描统计与判定方法：[全量库存审计报告](FONT_INVENTORY_AUDIT.md)。
+
+**注意：**这不是 51 文件 Core/Optional 精选包的差集。51 包仍缺最终 manifest；不要把 1,061 文件原始库的“已存在”自动映射成 51 包已存在。
 
 ---
 
-## A. 优先级最高：新的开源字体家族
+## A. 真实 ASS 样本候选里，当前最值得补的
 
-这些在你提供的目录文件名中没有看到同名字体。链接均指向作者／项目官方 GitHub 页面或 Release；不要从第三方字体包转存。
-
-| 字体 | 推荐用途 | 授权／获取 |
+### P1：优先核对
+| 字体 | 当前结果 | 为什么值得补 |
 |---|---|---|
-| **梦源黑体 Dream Han Sans**（SC／TC／J） | 正片对白、说明、画面注释；核心优势是非常细的多级字重 | SIL OFL 1.1；[官方仓库与 Releases](https://github.com/Pal3love/dream-han-cjk/releases) |
-| **梦源宋体 Dream Han Serif**（SC／TC／J） | 文艺、古风、书信、片尾说明；多级字重 | SIL OFL 1.1；[官方仓库与 Releases](https://github.com/Pal3love/dream-han-cjk/releases) |
-| **獅尾圓體 Swei Gothic CJK SC Medium** | 圆润对白、人物介绍、轻松日常番 | SIL OFL 1.1；[作者仓库](https://github.com/max32002/swei-gothic) |
-| **獅尾圓體 Swei Gothic CJK TC Medium** | 繁体字幕、繁体画面注释 | SIL OFL 1.1；[作者仓库](https://github.com/max32002/swei-gothic) |
-| **Resource Han Rounded CN**（优先看 Bold／不同圆度实例） | 现代圆体对白、UI、柔和的说明文字 | 字体部分 SIL OFL 1.1；[官方仓库](https://github.com/CyanoHao/Resource-Han-Rounded)；[Releases](https://github.com/CyanoHao/Resource-Han-Rounded/releases) |
-| **霞鹜文楷 LXGW WenKai**（Regular／Medium／Light） | 手写感对白、书信、角色留言、文艺字幕 | SIL OFL 1.1；[官方仓库与 Releases](https://github.com/lxgw/LxgwWenKai/releases) |
-| **霞鹜漫黑 LXGW Marker Gothic** | 漫画感旁白、手写强调、画面拟声词和短标题 | SIL OFL 1.1；[官方仓库与 Releases](https://github.com/lxgw/LxgwMarkerGothic/releases) |
-| **霞鹜臻楷 LXGW ZhenKai** | 楷书／较厚重的古风标题和强调文字 | SIL OFL 1.1；[官方仓库与 Releases](https://github.com/lxgw/LxgwZhenKai/releases) |
-| **小赖字体 Xiaolai** | 活泼手写风、角色留言、偏可爱的字幕 | SIL OFL 1.1；[官方仓库与 Releases](https://github.com/lxgw/kose-font/releases) |
-| **悠哉字体 Yozai**（Regular／Medium／Light） | 随性手写风、日常番注释、角色便笺 | SIL OFL 1.1；[官方仓库与 Releases](https://github.com/lxgw/yozai-font/releases) |
-| **得意黑 Smiley Sans** | 斜体感标题、强调字幕、视频标题；不建议长篇对白 | SIL OFL 1.1（保留名称有约束）；[官方仓库与 Releases](https://github.com/atelier-anchor/smiley-sans/releases) |
-| **朱雀仿宋 Zhuque Fangsong** | 书信、年代感、文学／古风片名和说明 | SIL OFL 1.1；[官方仓库与 Releases](https://github.com/TrionesType/zhuque/releases) |
-| **文泉驿点阵宋体 12px／13px／14px／15px／16px** | 像素风游戏画面、复古 UI、小尺寸点阵字 | GPL v2（含字体嵌入例外，按上游文件说明）；[字体文件与许可证](https://github.com/AmusementClub/WenQuanYi-Bitmap-Song-TTF) |
+| 森泽UD新黑 Gb4 R | **未检出精确 R 字重**；Gb4 M 已有 | 与简体中文字体需求有关；M 不能完全代替 R |
 
-### 梦源字体优先下载哪些字重？
+### P2：作品专用字／歌词／标题
+| 字体 | 当前结果 | 角色 |
+|---|---|---|
+| 方正胖娃_GBK | 未检出 | 《Endro》NextTitle 预告标题 |
+| FOT-CookHand Std R | 未检出 | OP/ED／手写效果，不是主对白 |
+| FOT-UDMarugo_Large Pr6N E | 未检出；同族 B 已有 | 项目字体需求；需精确字重 |
 
-字幕组作品表反复点名以下字重。你现有目录中没有看到 Dream Han／梦源字体家族：
+### P3：低频装饰／屏幕字
+| 字体 | 当前结果 | 角色 |
+|---|---|---|
+| A-OTF Kocho Std Heavy | 未检出 | Logo |
+| Kozuka Mincho Pr6N M | 未检出；其他 Kozuka Mincho 款已存在 | 竖排画面字 |
+| Kozuka Gothic Pro R | 未检出；Pro L / Pr6N H 等邻近款已存在 | 竖排画面字 |
+| FA 隷書Ｍ | 未检出 | OP 日文歌词 |
 
-- **梦源黑体 SC**：W15、W18、W20、W23、W24、W27。
-- **梦源宋体 SC**：W14、W15、W18、W22。
-- **夢源黑體 TC**：W15、W18、W20、W23、W24、W27。
-- **夢源明體 TC**：W14、W15、W18、W22。
-- **夢ノ明朝 J**：W14、W18。
+### 系统字体，不建议当作下载缺口
+- **Arial**：这次在自带目录里没找到；先检查 Windows `C:\Windows\Fonts`、Font Settings 和 mpv 实际运行环境。Windows 常见系统字体不在自定义目录，不代表机器一定缺失。
 
-不必逐个找散装文件。直接从 [Dream Han CJK 官方 Releases](https://github.com/Pal3love/dream-han-cjk/releases) 获取对应语言／地区的完整发行包，再按需要安装字重即可。注意它是思源字体衍生家族，主要新增价值是**更细的离散字重和排版兼容性**，不是完全不同的黑体骨架。
-
-### 霞鹜系列说明
-
-目录中没有看到明确命名为 LXGW／霞鹜的上述文件。建议优先顺序：
-
-1. 霞鹜文楷 Medium
-2. 霞鹜漫黑
-3. 霞鹜臻楷
-4. 小赖字体、悠哉字体
-
-霞鹜系列不止一个字体项目。请从每个项目自己的 Releases 下载，并保留各自的 `OFL.txt`。不要把多个字体合并成一个文件，也不要去掉许可证。
+商业字体（方正、汉仪、华康/DFP、Fontworks、Morisawa、Adobe 等）须按具体产品和用途获取授权；这里只列名称，不提供未经授权的字体包。
 
 ---
 
-## B. ACG 字幕论坛确实出现过、但你目录中未见同名文件的具体字体
+## B. 之前被列为缺失、实际已在原始库存里的字体
 
-以下按近年作品清单筛选。它们多为商业字库，**这里列出名称供你搜索／购买授权，不会将来路不明的字体包放进仓库**。
+### 1. 梦源黑体／梦源宋体：不要整套重下
 
-### 1. 方正系列
+原始库中：
+- Dream Han Sans：27 个 TTC 字重文件，SC/TC/HC/J/K 多地区 face 齐全；ASS 用到的 **SC W20、J W20 已有**。
+- Dream Han Serif：27 个 TTC 字重文件，SC/TC/HC/J/K 多地区 face 齐全；ASS 用到的 **SC W14、J W14 已有**。
+- Sans 当前见到 W1–W27 中除 W12、W22 以外的字重；Serif 当前见到 W1–W27 中除 W7、W20 以外的字重。
 
-你已经有大量方正字体，但以下具体款式／字重在上传目录中未见同名文件：
+### 2. 已有的开源/圆体/手写系列
 
-- 方正标雅宋_GBK
-- 方正屏显雅宋_GBK
-- 方正细雅宋_GBK
-- 方正特雅宋_GBK
-- 方正北魏楷书_GBK
-- 方正筑紫明朝宋（简繁）
-- 方正字迹－杨素彬楷（简繁）
-- 方正流行体_GBK
-- 方正锐正黑_GBK（Regular／DemiBold／ExtraBold）
-- 方正FW珍珠体（简繁）
-- 方正FW童趣POP体（简）
-- 方正达利体（简繁，Bold／ExtraBold）
-- 方正榜书楷（简繁）
-- 方正榜书行（简繁）
-- 方正莎儿硬笔（简繁）
-- 方正雅士黑（简）
-- 方正喵呜_GBK
+| 字体家族 | 扫描到的内容 |
+|---|---|
+| 獅尾圓體 Swei Gothic | SC/TC Medium、Bold、Black |
+| Resource Han Rounded | CN Bold |
+| 霞鹜文楷 LXGW WenKai | Medium、Bold、GB Medium、TC Medium |
+| 霞鹜漫黑 LXGW Marker Gothic | Regular |
+| 霞鹜臻楷 LXGW ZhenKai | Regular，以及 ZhenKai Slab GB |
+| 文泉驿点阵宋体 | 12px、13px、14px、15px；16px 未检出 |
+| 851 手書き雑フォント | 已有 |
+| MuzaiPixel | 已有 |
+| CLFN 24x CN | 已有 |
+| Koku Mincho Regular | 已有 |
 
-**特别核对：**你的目录里有文件名“方正喵鸣.ttf”，但字幕表写的是“方正喵呜_GBK”。这两个名字不能只凭中文近似就当作同一个字体；请安装后查看字体信息中的完整字体名称。
+以下旧清单中列为待下载的开源字体，仍未在本次扫描中找到：**小赖字体 Xiaolai、悠哉字体 Yozai、得意黑 Smiley Sans、朱雀仿宋 Zhuque Fangsong、文泉驿点阵宋体 16px**。如果确实需要它们，再从作者官方项目页获取；不要从第三方字体合集转存。
 
-方正官方查询／授权入口：[方正字库官网](https://www.foundertype.com/)
+官方来源：
+- Dream Han：[Pal3love/dream-han-cjk](https://github.com/Pal3love/dream-han-cjk/releases)
+- Swei Gothic：[max32002/swei-gothic](https://github.com/max32002/swei-gothic)
+- Resource Han Rounded：[CyanoHao/Resource-Han-Rounded](https://github.com/CyanoHao/Resource-Han-Rounded/releases)
+- LXGW WenKai：[LXGW WenKai Releases](https://github.com/lxgw/LxgwWenKai/releases)
+- LXGW Marker Gothic：[LXGW Marker Gothic](https://github.com/lxgw/LxgwMarkerGothic/releases)
+- LXGW ZhenKai：[LXGW ZhenKai](https://github.com/lxgw/LxgwZhenKai/releases)
+- Xiaolai：[kose-font](https://github.com/lxgw/kose-font/releases)
+- Yozai：[yozai-font](https://github.com/lxgw/yozai-font/releases)
+- Smiley Sans：[Smiley Sans](https://github.com/atelier-anchor/smiley-sans/releases)
+- Zhuque：[Zhuque](https://github.com/TrionesType/zhuque/releases)
+- WenQuanYi Bitmap Song：[官方项目](https://github.com/AmusementClub/WenQuanYi-Bitmap-Song-TTF)
 
-### 2. 汉仪系列
+### 3. 方正系列：大部分旧候选其实已存在
 
-你有 `HYQiHei_65S.ttf` 和 `HYXuanSong65S.ttf`，但目录中没看到汉仪正圆系列，也没看到下面这些精确字重：
+**已找到：**
+- 方正屏显雅宋、方正北魏楷书、方正筑紫明朝宋；
+- 方正FW珍珠体、方正FW童趣POP体、方正达利体；
+- 方正榜书楷、方正榜书行、方正莎儿硬笔、方正雅士黑；
+- 方正喵呜、方正卡通、方正少儿、方正中倩、方正宋黑、小标宋、书宋；
+- 方正兰亭圆 DB 与 DB1 两个不同字重；
+- 方正锐正黑目前见到 Bold、DemiBold，不能据此认定 Regular/ExtraBold 也齐全。
 
-- 汉仪正圆 55S
-- 汉仪正圆 65S
-- 汉仪正圆 75S
-- 汉仪正圆 85S
-- 汉仪正圆 95S
-- 汉仪玄宋 35S
-- 汉仪玄宋 55S
-- 汉仪玄宋 75S
-- 汉仪玄宋 95S
-- 汉仪旗黑 75S
-- 汉仪旗黑 95S
-- 汉仪风波便利店 W
-- 汉仪歪歪体简
+**仍未检出：**
+- 方正标雅宋、方正细雅宋、方正特雅宋；
+- 方正字迹－杨素彬楷、方正流行体；
+- 方正胖娃_GBK（ASS 候选，见 A 节）。
 
-其中汉仪玄宋 65S、汉仪旗黑 65S 你已经有，不要重复下载。汉仪正圆的 55S–95S 是一整个值得补的字重组。
+方正官方查询：[方正字库](https://www.foundertype.com/)。
 
-官方查询／授权入口：[汉仪字库字体列表](https://w.hanyi.com.cn/font-list)
+### 4. 汉仪：指定字重基本已覆盖
 
-### 3. FOT／Fontworks 日文字体
+- 汉仪正圆：35S、55S、65S、75S、85S、95S 均找到。
+- 汉仪玄宋：35S、45S、55S、65S、75S、85S、95S 均找到。
+- 汉仪旗黑：45S、50S、65S、75S、85S、95S、105JF 等多个字重找到。
+- 汉仪风波便利店 W、汉仪歪歪体简也找到。
 
-目录中已经有 FOT-Seurat、PopJoy、RocknRoll、Matisse、Rodin 等，不要重复找同名款。以下是字幕清单里出现、但文件名列表中没看到的**不同字体家族或指定字重**：
+不要再按旧清单整套下载汉仪正圆／玄宋／旗黑。具体内部名见 [ASS 对照 CSV](inventory/ass-font-inventory-comparison.csv) 与原始 inventory CSV。
 
-- FOT-TelopMin ProN B（テロップ明朝 ProN B）
-- FOT-TsukuAOldMin Pr6N R（筑紫Aオールド明朝）
-- FOT-TsukuMin Pr6N L
-- FOT-TsukuMin Pr6N B
-- FOT-NewRodin ProN B（注意：你已有 RodinProN，不等于 NewRodin）
-- FOT-Skip Std B
-- FOT-MatisseV Pro B（注意：你已有 Matisse 系列，不等于 MatisseV）
-- FOT-Kurokane Std EB
-- FOT-Pearl Std L
-- FOT-NewCezanne Pro B
-- FOT-UDKakugo Large Pr6N E（你目录里是 Large Pr6N B，E 是另一字重）
+官方查询：[汉仪字库](https://w.hanyi.com.cn/font-list)。
 
-官方获取／授权入口：[Fontworks](https://fontworks.co.jp/)
+### 5. Fontworks / FOT：多款指定字重已存在
 
-### 4. A-OTF／Morisawa 日文字体
+已找到：
+- FOT-TelopMin ProN B/E；
+- FOT-TsukuAOldMin Pr6N R，以及 Pr6 M、Pr6N D；
+- FOT-TsukuMin Pr6N L/B 和其他字重；
+- FOT-NewRodin ProN B/DB；
+- FOT-Skip Std B/D/E/L/M；
+- FOT-MatisseV Pro B；
+- FOT-Kurokane Std EB；
+- FOT-Pearl Std L；
+- FOT-NewCezanne Pro / ProN B、DB；
+- FOT-UDKakugo Large Pr6N B/R。
 
-你已经有 A-OTF-RyuminPro-Regular、A-OTF-ShinMGoPr6N-Medium 等文件；以下是字幕表要求的其他家族／字重：
+仍未检出：
+- FOT-CookHand Std R；
+- FOT-UDMarugo Large Pr6N E（B 已有）。
 
-- A-OTF Antique Std AN4
-- A-OTF Futo Go B101 Pr6N Bold
-- A-OTF Ryumin Pr6N B-KL（目录里有 Regular，不是该 B-KL 字重）
-- A-OTF Shin Maru Go Pr6N DB（目录里有 Medium，仍需确认是否包含 DB）
+官方获取：[Fontworks](https://fontworks.co.jp/)。
 
-官方获取／授权入口：[Morisawa](https://www.morisawa.co.jp/)
+### 6. Morisawa / A-OTF：旧清单中的四个候选都已找到
 
-### 5. 华康／DFP 系列
+- A-OTF Antique Std AN4；
+- A-OTF Futo Go B101 Pr6N Bold；
+- A-OTF Ryumin Pr6N B-KL；
+- A-OTF Shin Maru Go Pr6N DB。
 
-以下是字幕组清单中出现、而你目录文件名未明确列出的特定字体或字重：
+另外，Morisawa **MO UDShinGo SC Gb4 M** 与 **A-OTF UD Shin Go Pr6N M** 是两个不同家族、两款字体；两者在原始库中都存在。MO UDShinGo SC Gb4 R 未检出。
 
-- DFP-POPミックス W5（DFPPOPMix-W5）
-- DFP-京劇体 W5（DFPKyoGeki-W5）
-- 华康正颜楷体 W7（GB／P／B5 对应版本）
-- 华康楷书体 W7(P)
+官方获取：[Morisawa](https://www.morisawa.co.jp/)。
 
-你已经有华康翩翩体、手札体、少女文字、娃娃体、布丁体、海报体、华综体、勘亭流、行书体等多款；本节只列另外出现的具体项目。
+### 7. 华康／DFP：多数存在，少数精确款未检出
 
-官方查询／授权入口：[华康字型](https://www.dynacw.com.cn/index.aspx)
+已找到：
+- DFP-POP Mix W5；
+- 华康楷书 W7（含 DFP/P face）；
+- 华康圆体 W7-A、华康方圆体 W7(P)；
+- 华康翩翩体 W3-A/W5-A、华康少女文字 W5。
 
----
+未检出：
+- DFP-京劇体 W5；
+- 华康正颜楷体 W7。
 
-## C. 其他字幕清单中值得留意的字体
+官方查询：[华康字型](https://www.dynacw.com.cn/index.aspx)。
 
-这些更偏特殊场景或小众字幕组习惯，按需收集：
+### 8. 其他旧候选
 
-- 仓耳今楷 01-27533 W04
-- 仓耳今楷 03 W04
-- 851手書き雑フォント（851tegakizatsu）
-- MuzaiPixel
-- CLFN 24x CN
-- Koku Mincho Regular（刻明朝）
-- 猫啃什锦黑－轻量版
-- 奶布儿蝴蝶体
-- YEFONTYouZhiYuanTi
-- 腾祥嘉丽准粗圆 GB18030
-- 喜鹊乐敦体
+已找到：仓耳今楷 01-27533 W04、仓耳今楷 01 W05、仓耳今楷 04 W04、猫啃什锦黑 Lite、奶布儿蝴蝶体、也字工厂幼稚园体、腾祥嘉丽准粗圆。
 
-以上部分字体的授权状态和官方发布入口需要逐款确认。不要因为某个字幕组字体包里有，就默认它可以商用或公开转载。
-
----
-
-## D. 当前目录里已经有的，别再重复下载
-
-根据你给的文件名，下面这些已能确认有相应家族或主要版本：
-
-- **思源黑体／宋体**：Source Han Sans、Source Han Serif，含 CN／SC／TW 的多种字重。
-- **更纱黑体**：Sarasa Gothic SC／TC／J，已有 Regular、Bold、SemiBold 等版本。
-- **FOT**：Seurat、Matisse、PopJoy、RocknRoll、RodinProN 等已有。
-- **方正**：兰亭黑、兰亭圆、兰亭中黑／准黑，粗雅宋／中雅宋／准雅宋、粗圆、准圆、黑体、楷体、仿宋、剪纸、卡通、魏碑、综艺、少儿等已有多款。
-- **华康**：少女文字、翩翩体、手札体、娃娃体、布丁体、海报体、方圆体、华综体、勘亭流、行书等已有多款。
-- **其他**：微软雅黑、幼圆、宋体、楷体、仿宋、文泉驿微米黑、Zpix 等也在目录里。
-
-注意：这部分以文件名为依据；如果你要做更精确的“字体族／内部 PostScript 名称／字重”清理，需要读取每个 TTF／OTF／TTC 的 name table，而不是只看资源管理器文件名。
+未检出：仓耳今楷 03 W04、喜鹊乐敦体。
 
 ---
 
-## E. 社区参考：这些名单是从真实字幕制作需求中筛出来的
+## C. 扫描数据质量：不要把警告误认为坏字体
 
-以下是公开的 ACG 字幕论坛作品页，页面列出具体字幕组、作品与字体需求。建议你收藏这些页面，日后遇到新番也能继续补库。
+这次全量扫描的 1,695 个 face 中：
+- 1,435 个 cmap 正常解析；
+- 203 个 cmap 容错恢复（涉及 75 个文件），不是 203 个无法读取的字体；
+- 57 个 face（45 个文件）没有 Unicode cmap 子表，需要特别注意旧编码和 Unicode 显示兼容。
 
-1. [《淡岛百景》：北宇治字幕组、TSDM 字幕组所需字体](https://bbs.acgrip.com/thread-13925-1-1.html)（2026）
-2. [《超辉夜姬！》：喵萌奶茶屋、北宇治等字幕字体清单](https://bbs.acgrip.com/forum.php?mod=viewthread&tid=13941)（2026）
-3. [《随兴旅／杂旅》：喵萌、拨雪寻春、动漫国、千夏字体清单](https://bbs.acgrip.com/thread-13203-1-1.html)（2025，2026 更新）
-4. [《契约之吻》字幕字体清单](https://bbs.acgrip.com/thread-10171-1-1.html)
-5. [《夏日重现》字幕字体清单](https://bbs.acgrip.com/forum.php?mod=viewthread&tid=9964)
-6. [Anime Font Library：动画外挂字幕字体库索引](https://github.com/Megumi-B/Anime_Font_Library)
+查看：
+- [全量库存审计报告](FONT_INVENTORY_AUDIT.md)
+- [无 Unicode cmap 的 57 个 face](inventory/no-unicode-cmap-faces.csv)
+- [203 个 cmap 恢复记录](inventory/recovered-cmap-faces.csv)
+- [原始 CSV](font_inventory_20261112_151422.csv) / [原始 JSON](font_inventory_20261112_151422.json) / [原始日志](font_scan_errors_20261112_151422.txt)
 
-注意第 6 项社区字体库的说明写有“仅限个人用途、严禁商业用途”；它可以作为查名字的索引，不代表可以把其中字体重新上传到公共仓库。
+## D. 与 51 文件精选包的区别
 
----
+此前用户终端记录的精选包是 41 个 Core + 10 个 Optional，总计 51 个文件。它是从原始字体目录另行挑选的子集。当前仓库没有该包最终的 `manifest.csv`，所以本清单只能说明**原始 1,061 文件目录**里有什么，不能说明 51 包里具体保留了哪些文件。
 
-## F. 授权与转载规则
+拿到 51 包 manifest 后，才可以做 Core / Optional 的精确差集。
 
-- **SIL OFL 1.1**：通常允许使用、嵌入和再分发，但再分发时必须保留许可证／版权声明；字体文件不能单独售卖，修改版本还要遵守 OFL 条件。每个项目的保留字体名称也要遵守。
-- **IPA Font License 1.0**：与 OFL 不同。部分霞鹜衍生字体（例如霞鹜新晰黑、霞鹜新致宋）采用 IPA 许可；虽然可用于影视内容，但涉及软件、网页、程序内嵌和再次分发时需认真核对条款。请从官方仓库单独下载，不要与 OFL 字体合并成一个字体文件。
-- **商业字体**：方正、汉仪、华康／DFP、Fontworks、Morisawa 等，必须根据具体产品和用途取得许可。个人电脑安装可用，不等于允许把字体文件公开上传到 GitHub。
+## E. 再分发与授权
 
-官方参考：
-- [SIL Open Font License 1.1 正文](https://openfontlicense.org/open-font-license-official-text/)
-- [霞鹜新晰黑的 IPA 许可说明](https://github.com/lxgw/LxgwNeoXiHei)
-- [霞鹜新致宋的 IPA 许可说明](https://github.com/lxgw/LxgwNeoZhiSong)
+- 商业字体：方正、汉仪、华康/DFP、Fontworks、Morisawa、Adobe 等，按具体产品许可获取。这里不上传字体二进制。
+- 开源字体：OFL/其他许可证各有条款；再分发时保留许可证和版权声明，并遵守 Reserved Font Name 等条件。
+- Windows 随附字体（例如 UD Digi Kyokasho）通过 Windows 可选功能或官方途径获取，不复制或镜像到本仓库。
+- 社区字幕文件公开可访问，不代表字体或字幕可以任意再分发。
 
----
-
-## 本次仓库提交说明
-
-本仓库当前只保存了这份缺失清单和官方获取链接。**没有把任何商业字体文件或第三方字体包上传到仓库，也没有把开源字体二进制冒充成已上传文件。**
-
-开源字体原则上可以在符合许可证条件的前提下再分发，但本次提交操作没有完成对上游字体二进制的转存；所以请点击上面的作者官方仓库／Release 下载。商业字体则必须经授权后才能转载。
+参考：[OFL 1.1](https://openfontlicense.org/open-font-license-official-text/)；[UD Digi Kyokasho 官方获取说明](UDDigiKyokashoN-R.md)。
