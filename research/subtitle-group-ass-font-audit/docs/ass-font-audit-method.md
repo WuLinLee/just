@@ -58,7 +58,11 @@ python -m unittest discover -s tests
 
 第 4、5 项不能自动推导谁负责字幕和字体设计。出现多个来源时应记录为 mixed / uncertain，而不是强行归入一个组。
 
-## 5. 51 文件精选包的核验
+## 5. 原始 1,061 文件库存与 51 文件精选包的核验
+
+仓库根目录 `font_inventory_20261112_151422.csv/json` 是原始 `font for mpv` 目录的全量快照（1,061 files / 1,695 faces）。本研究的 `data/ass-font-inventory-comparison.csv` 已将 40 个 ASS 候选与这份原始库存的内部名称表做了对照（31 exact present / 8 not found / Arial 需系统字体检查）。
+
+这**不是** 51 文件 Core/Optional 精选包的差集。51 包的 manifest 尚未提供；需要收到 manifest 后独立进行逐文件、逐 face 和内部名称核验。
 
 需要用户提供该包的 `manifest.csv`（或将 51 文件本身上传给可读取字体元数据的工具）。每个字体应比对：
 
