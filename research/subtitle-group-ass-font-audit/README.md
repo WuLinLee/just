@@ -1,6 +1,6 @@
 # 动漫／影视字幕组 ASS 字体抽样审计
 
-> **2026-11-16 库存复核更新**：已用 2026-11-12 的 Font Name Inspector 全量输出（1,061 个文件 / 1,695 个 face）与 ASS 候选字体做内部 name table 比对。40 项候选中 **31 项已精确找到、8 项未检出、Arial 1 项需检查 Windows 系统字体**。这不是 51 文件精选包差集；51 包 manifest 仍未取得。查看 [完整审计报告](../../FONT_INVENTORY_AUDIT.md)、[逐项对照 CSV](data/ass-font-inventory-comparison.csv)、[无 Unicode cmap 清单](../../inventory/no-unicode-cmap-faces.csv) 与 [cmap 恢复记录](../../inventory/recovered-cmap-faces.csv)。
+> **2026-11-16 库存复核更新**：已用 2026-11-12 的 Font Name Inspector 全量输出（1,061 个文件 / 1,695 个 face）与 ASS 候选字体做内部 name table 比对。40 项候选中 **31 项精确存在、8 项精确名称未检出、Arial 1 项需查系统字体**；按邻近家族细分为 **31 owned / 5 partial / 3 missing / 1 uncertain**。这不是 51 文件精选包差集；51 包 manifest 仍未取得。查看 [完整审计报告](../../FONT_INVENTORY_AUDIT.md)、[逐项对照 CSV](data/ass-font-inventory-comparison.csv)、[规范化状态 CSV](data/font-gap-audit.csv)、[规范化状态 JSON](data/font-gap-audit.json)、[无 Unicode cmap 清单](../../inventory/no-unicode-cmap-faces.csv) 与 [cmap 恢复记录](../../inventory/recovered-cmap-faces.csv)。
 
 
 > 审计日期：2026-11-16  
@@ -18,6 +18,8 @@
 - [逐个 ASS／作品样本及来源（CSV）](data/ass-samples.csv)
 - [字体候选与核验状态（CSV）](data/font-candidates.csv)
 - [结构化字体观察数据（JSON）](data/group-font-evidence.json)
+- [ASS 字体 × 原始库存对照（CSV）](data/ass-font-inventory-comparison.csv)
+- [规范化缺口状态（CSV）](data/font-gap-audit.csv) · [JSON](data/font-gap-audit.json)
 - [ASS 字体提取与审计方法](docs/ass-font-audit-method.md)
 - [批量 ASS/SSA 字体提取脚本](scripts/ass_font_audit.py)（Python 标准库）
 - [脚本最小测试](tests/test_ass_font_audit.py)
@@ -51,29 +53,26 @@ VCB-Studio 是常见压制／发布标签，但并不代表所有随包字幕均
 
 因此，不能把一个 ASS 的所有 Style 字体简单视作“主对白必装字体”。样式名称和事件用途必须结合起来判断。
 
-### 3. 原始 1,061 文件库的已存在与未检出项
+### 3. 原始 1,061 文件库的交叉核验结果
 
-已确认存在的高优先级字体包括 Dream Han Sans SC/J W20、Dream Han Serif SC/J W14、华康圆体W7-A、华康方圆体W7(P)、森泽UD新黑 Gb4 M、A-OTF UD Shin Go Pr6N M、Source Han Sans SC/TC Medium、Source Han Serif SC/TC SemiBold 等。
+ASS 证据中的字体名已与原始扫描逐项对照，不应再整体视为缺口：
 
-40 项 ASS 候选的逐项结果在 [ass-font-inventory-comparison.csv](data/ass-font-inventory-comparison.csv)。当前精确未检出的 8 项：
-- 森泽UD新黑 Gb4 R（同族 M 已有，但不是同一字重）
-- 方正胖娃_GBK
-- FOT-CookHand Std R
-- FOT-UDMarugo_Large Pr6N E（同族 B 已有）
-- A-OTF Kocho Std Heavy
-- Kozuka Mincho Pr6N M（同目录有其他 Kozuka Mincho 变体）
-- Kozuka Gothic Pro R（有相邻系列/字重）
-- FA 隷書Ｍ
+- **已精确拥有（31 项）**：包括 Dream Han Sans SC/J W20、Dream Han Serif SC/J W14、华康圆体 W7-A／华康方圆体 W7(P)、华康翩翩体 W5-A/W3-A、森泽 UD 新黑 Gb4 M、A-OTF UD Shin Go Pr6N M、Source Han Sans SC/TC Medium、Source Han Serif SC/TC SemiBold，以及多款方正／汉仪／华康／日文字体。
+- **部分拥有（5 项，精确版本不同）**：森泽 UD 新黑 Gb4 R（M 已有）、方正胖娃 GBK（扫描到 `FZPangWa-M18S` 相关款，但 ASS 名称的精确别名/版本仍需确认）、FOT-UDMarugo Large Pr6N E（B/DB 已有）、Kozuka Mincho Pr6N M（其他 Kozuka Mincho 变体已存在）、Kozuka Gothic Pro R（有 Pro L / Pr6N H 邻近款）。
+- **未找到对应家族／版本（3 项）**：FOT-CookHand Std R、A-OTF Kocho Std Heavy、FA 隷書Ｍ。
+- **环境待确认（1 项）**：Arial 不在自定义扫描目录，但可能由 Windows 系统字体提供。
 
-另有 Arial 不在自带目录，先检查 Windows 系统字体。完整匹配文件名、face、内部名称和 cmap 状态见逐项 CSV。## 与已有字体包和本仓库既有清单的关系
+机器可读逐条证据见 [ass-font-inventory-comparison.csv](data/ass-font-inventory-comparison.csv) 与 [规范化状态表](data/font-gap-audit.csv)。原始统计 31/8/1 指“精确内部名命中／精确名未命中／系统字体检查”；上面的 31/5/3/1 是按邻近家族作的实用状态细分，两种口径不可混为一谈。
+
+## 与已有字体包和本仓库既有清单的关系
 
 请特别区分以下三个集合：
 
 1. **本次字幕组审计所见字体**：来自公开 ASS 的样式名和行内字体覆盖标签，以及字幕项目 README 的字体需求列表。
 2. **用户此前建立的 51 文件 mpv 精选包**：用户此前运行脚本成功，终端报告 41 个核心文件、10 个可选文件，共 51 个，大小约 662.5 MB。对话摘要只保留了部分字体家族信息；当前研究没有取得该精选包的完整 `manifest.csv` 和 51 个文件的内部 name table。
-3. **仓库 main 分支已有的 FONT_GAP_LIST.md**：该清单基于另一份用户字体目录树（613 个文件条目，清单日期 2026-11-10），不是 51 文件精选包的 manifest。
+3. **仓库 main 分支的 FONT_GAP_LIST.md**：现已升级为 2026-11-12 的 1,061 文件／1,695 face 内部名称快照；其中提到的 613 项是 2026-11-10 的历史目录树基准。它们都不是 51 文件精选包。
 
-这三个基准不能合并计算。**本目录中的“候选缺口”不是已经完成的逐文件差集**。在取得 51 文件 manifest 或字体包之前，不能把“没有出现在本轮对话摘要中”写成“已确认缺失”。
+这三个基准不能合并计算。本轮已经完成 **ASS 40 项候选 × 原始 1,061 文件库存**的内部名称对照；但该结果不能映射为 51 文件包的差集。51 包仍需独立核验 Core/Optional 的 manifest。
 
 ## 批量解析辅助脚本
 
