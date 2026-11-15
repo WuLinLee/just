@@ -2,8 +2,8 @@
 """Extract ASS/SSA style fonts and inline font overrides using only Python stdlib.
 
 This is a research helper, not a complete libass renderer. It reports declared
-styles separately from styles used by Dialogue events and captures inline \fn
-and \r overrides. It does not resolve Windows font fallback or embedded fonts
+styles separately from styles used by Dialogue events and captures inline \\fn
+and \\r overrides. It does not resolve Windows font fallback or embedded fonts
 inside MKV/MKS containers.
 """
 
