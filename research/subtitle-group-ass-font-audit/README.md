@@ -16,6 +16,8 @@
 - [字体候选与核验状态（CSV）](data/font-candidates.csv)
 - [结构化字体观察数据（JSON）](data/group-font-evidence.json)
 - [ASS 字体提取与审计方法](docs/ass-font-audit-method.md)
+- [批量 ASS/SSA 字体提取脚本](scripts/ass_font_audit.py)（Python 标准库）
+- [脚本最小测试](tests/test_ass_font_audit.py)
 - [交接给下一个 AI 的待办清单](HANDOFF_NEXT_AI.md)
 
 ## 重要结论
@@ -76,6 +78,18 @@ VCB-Studio 是常见压制／发布标签，但并不代表所有随包字幕均
 3. **仓库 main 分支已有的 FONT_GAP_LIST.md**：该清单基于另一份用户字体目录树（613 个文件条目，清单日期 2026-11-10），不是 51 文件精选包的 manifest。
 
 这三个基准不能合并计算。**本目录中的“候选缺口”不是已经完成的逐文件差集**。在取得 51 文件 manifest 或字体包之前，不能把“没有出现在本轮对话摘要中”写成“已确认缺失”。
+
+## 批量解析辅助脚本
+
+在研究目录内执行（Python 3.9+，无第三方依赖）：
+
+```bash
+python scripts/ass_font_audit.py --input /path/to/subtitle-folder
+python scripts/ass_font_audit.py --input /path/to/example.ass --output-dir ./audit-output
+python -m unittest discover -s tests
+```
+
+默认递归扫描 `.ass`／`.ssa`，输出 `ass_font_audit.json` 与 `ass_font_audit.csv`。脚本把“Style 已定义”和“被 Dialogue 使用”分开计数，并提取行内 `\\fn`、`\\r` 与 ASS `[Fonts]` 段名称。它不是 libass 渲染器，也不解析 MKV/MKS 容器附件；解析结果仍需人工复核。
 
 ## 审计边界
 
