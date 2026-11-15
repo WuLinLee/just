@@ -1,6 +1,6 @@
 # Handoff：mpv 字体库存 × 字幕组 ASS 审计
 
-> 更新：2026-11-16。接手前先读仓库根目录的 `README.md`、`FONT_GAP_LIST.md` 和 `FONT_INVENTORY_AUDIT.md`。
+> 更新：2026-11-16。接手前先读仓库根目录的 `README.md`、`FONT_GAP_LIST.md` 和 `FONT_INVENTORY_AUDIT.md`，以及本目录 `README.md`。本轮已通过 GitHub Blob API 直接读取原始 CSV/JSON/日志，不需要用户重新上传这些扫描文件。
 
 ## 用户目标
 
@@ -90,7 +90,7 @@
 
 ## 下一步优先级
 
-1. 让用户提供 51 文件包现有 `manifest.csv`，做 Core/Optional 精确差集。
+1. 如需完成 51 文件包 Core/Optional 精确差集，先检查仓库、已有附件或可访问的原始项目目录是否已有 `manifest.csv`。只有确认仍不存在时，才一次性向用户索取现成 manifest；不要求重扫原始 1,061 文件库，也不要求重新上传仓库已有的 CSV/JSON。
 2. 对 57 个 no-Unicode cmap face，检查 legacy encoding、Unicode 映射与实机 mpv/libass 表现。
 3. 对 203 个 recovered cmap 面抽查重要 CJK 字符覆盖，尤其注意损坏段跳过是否导致缺字。
 4. 扩充同一字幕组跨作品 ASS，优先主对白证据，不只收歌词/标题。
