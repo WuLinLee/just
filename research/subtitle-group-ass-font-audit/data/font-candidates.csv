@@ -1,41 +1,41 @@
-font_name_as_in_ASS,normalized_family_or_alias,first_seen_in,evidence_role,priority,51_file_pack_status,comparison_note,next_verification
-"Dream Han Sans SC W20","Dream Han Sans / 梦源黑体 SC W20","SweetSub - Koori no Jouheki EP16","Default/Text-CN/Sign/Note；主对白与画面字","P0","摘要未列出；高度疑似未入51款包，但须查 manifest","现有思源黑体不能视为 Dream Han 的同一文件名/字重；字体衍生关系不等于完全等价","在 manifest.csv 中查 Full Name/PostScript Name；对内部name table再比对"
-"Dream Han Sans J W20","Dream Han Sans / 梦源黑体 J W20","SweetSub - Koori no Jouheki EP16","日文对白样式","P0","摘要未列出；待manifest确认","不要以普通日文字体或 Source Han Sans SC 替代判断","同上"
-"Dream Han Serif SC W14","Dream Han Serif / 梦源宋体 SC W14","SweetSub - Koori no Jouheki EP16","OP/ED、中文歌词及标题相关样式","P0","摘要未列出；待manifest确认","与Source Han Serif SC SemiBold不是同一ASS字体名；需核对实际文件","查Full Name/PostScript Name/字重"
-"Dream Han Serif J W14","Dream Han Serif / 梦源宋体 J W14","SweetSub - Koori no Jouheki EP16","日文歌词样式","P1","摘要未列出；待manifest确认","角色限于该样本的日文歌词","查manifest"
-"华康圆体W7-A","DF Yuan W7-A","千夏 - Nekopara Today's Neko08","Default/Upper；主对白","P0","摘要未列出精确文件名；待manifest确认","与华康方圆体、方正准圆不同，不能按“都有圆体”算作同款","查字体内部Full Name/PS Name"
-"华康方圆体W7(P)","DFP FangYuan W7(P)","千夏 - Nekopara Today's Neko08；DHR文件标签样本","OPCN/EDCN/Title；歌词与标题","P0","此前分析已称未见该具体字体；仍需 manifest 最终确认","繁简/地区/厂商版本可能有不同内部名；与方正准圆不是同款","查精确文件名和name table"
-"华康翩翩体W5-A","DF HanziPen W5-A","喵萌 WEP / Doremi；MingYSub Painoko ED；SweetSub Mirai","歌词、手写风、部分画面字","P1","摘要中的“手写字体”项目不够精确；待manifest确认","已找到多个不同作品／来源引用，不能只因字体家族有其他手写款就认为覆盖","查manifest的Full Name/PS Name"
-"华康翩翩体W3-A","DF HanziPen W3-A","喵萌 Doremi","手写／作品字","P2","摘要未列精确字重；待manifest确认","W3 与 W5 是不同字重","核对内部字重"
-"森泽UD新黑 Gb4 M","MO UDShinGo SC Gb4 M","MingYSub Painoko / Machikado Mazoku","中文主对白","P0","摘要未列出；高度疑似未入51款包","不要把 A-OTF UD Shin Go Pr6N M 和 Morisawa MO UDShinGo 视为同一文件","在manifest和字体name table中查完全匹配"
-"森泽UD新黑 Gb4 R","MO UDShinGo SC Gb4 R","MingYSub Dorama-DIY；Skip to Loafer README","简体中文字体需求","P1","摘要未列出；待manifest确认","同家族不同字重，不能自动用M代替R","检查PostScript Name和OS/2 weight"
-"A-OTF UD Shin Go Pr6N M","A-OTF UD新ゴ Pr6N M","MingYSub Machikado Mazoku","日文主对白","P0","摘要只提到其他A-OTF家族；待manifest确认","A-OTF UD Shin Go 与 A-OTF Ryumin/Maru Folk 不同家族","查完整内部名称及对应字重"
-"汉仪玄宋 75S","HYXuanSong 75S","喵萌项目 README（ODDTAXI / 多项目）","项目字体；字幕角色需要回到ASS确认","P1","摘要未确认是否含该具体字重","已有某些汉仪玄宋文件也不等于75S完整覆盖","查manifest精确名称和字符覆盖"
-"汉仪正圆-75S","HY ZhengYuan 75S","MingYSub mono songs","歌词／小字","P1","摘要未列出正圆系列，疑似未入；须查manifest","与方正准圆、华康圆体不可等同","查内部name table"
-"汉仪正圆-85S","HY ZhengYuan 85S","MingYSub mono songs","ED歌词","P1","摘要未列出正圆系列，疑似未入；须查manifest","75S与85S为不同字重/版本","查内部name table"
-"FZLanTingYuan-DB-GBK","方正兰亭圆_GBK_中","喵萌 Touhai；SweetSub Mai Mai Miracle/Mai etc.","可能主对白或屏幕字，取决于ASS style","P1","此前报告只笼统提到兰亭圆；精确字重是否在51款中未知","不能仅凭“兰亭圆”家族字样确认 DB 版本已存在","从manifest确认文件及字体内部字重"
-"FZLanTingYuan-DB1-GBK","方正兰亭圆_GBK_中粗","MingYSub Bocchi / Dorama-DIY；喵萌项目清单","画面字/字幕样式","P1","精确DB1字重在摘要中未确认","DB与DB1不可互相假定等价","查文件内部OS/2 weight和PS Name"
-"FZShaoEr-M11","方正少儿_GBK","轻之国度 Endro Title；喵萌 Nonnon","标题","P2","此前摘要未列明；待manifest确认","标题字不是主对白必需，但同名需匹配","查manifest"
-"方正胖娃_GBK","方正胖娃","轻之国度 Endro NextTitle","片尾预告标题","P2","此前摘要未列明；待manifest确认","可能有字体别名，需用内部名称确认","查name table"
-"FZMiaoWu-GBK","方正喵呜_GBK","北宇治 Bocchi OP Title；喵萌 Yuru Camp README","OP标题／作品专用字","P2","此前摘要未列明；待manifest确认","不要与“方正喵鸣”文件名直接认定为同一个","查字体内部Full Name/PS Name"
-"FZKaTong-M19","方正卡通_GBK","SumiSora NGNL；喵萌 Nonnon README","画面字／卡通字","P2","此前摘要未列明；待manifest确认","与常规方正字体家族不同","查manifest"
-"方正中倩_GBK","FZZhongQian","悠哈璃羽 Kuzu no Honkai","正片对白","P1","此前摘要未列明；待manifest确认","正片对白用字，优先级高于片头标题字","查manifest"
-"方正宋黑_GBK","FZSongHei-B07","悠哈璃羽 Kuzu no Honkai；LoliHouse Revue尾注","标题/片尾/屏幕字","P2","此前摘要未列明精确字体；待manifest确认","与宋体/雅黑不是等价字体","查manifest"
-"华康少女文字W5","DF Girl Text W5","悠哈璃羽 Kakegurui SP01","菜单文字","P2","此前摘要列出的华康少女文字家族情况未确认字重","特典菜单专用，不是主对白","查manifest"
-"FOT-CookHand Std R","FOT CookHand Std R","MingYSub Painoko ED；喵萌 Bocchi ED effect","日文ED歌词/手写效果","P2","摘要未列出CookHand；待manifest确认","歌词用途，避免放进主对白核心集","查manifest与Fontworks内部名称"
-"FOT-UDMarugo_Large Pr6N B","FOT UDMarugo Large Pr6N B","MingYSub mono OP/ED","日文OP/ED歌词","P2","摘要提及其他UDMarugo相关项；具体Large Pr6N B未确认","家族名相近不代表Large/Pr6N/字重匹配","逐一比对名称和字重"
-"FOT-UDMarugo_Large Pr6N E","FOT UDMarugo Large Pr6N E","SweetSub Mai Mai Miracle README","项目字体需求","P2","具体E字重未确认","不要以DB或B替代","查manifest"
-"Source Han Sans SC Medium","思源黑体 SC Medium","SweetSub Sarazanmai","Main主对白样式","P0","51包摘要提及思源黑体，但具体SC Medium是否存在须检查manifest","字体名与地区版本需匹配；不能凭家族名确认覆盖","检查Full Name/PostScript Name与内部字重"
-"Source Han Sans TC Medium","思源黑体 TC Medium","SweetSub Sarazanmai","繁体Main主对白样式","P0","51包摘要提及思源黑体，具体TC Medium版本待确认","SC与TC不可简单视为同一个字形版本","查manifest"
-"Source Han Serif SC SemiBold","思源宋体 SC SemiBold","SweetSub Sarazanmai","Next/歌词相关样式","P1","51包摘要提及思源宋体，但该字重可能缺失","精确字重需确认","查manifest"
-"Source Han Serif TC SemiBold","思源宋体 TC SemiBold","SweetSub Sarazanmai","繁体歌词/次样式","P1","具体TC SemiBold未确认","TC字形版本需单独确认","查manifest"
-"方正小标宋_GBK","FZXiaoBiaoSong","KTXP&VCB Plastic Memories","Default主对白样式","P1","摘要未列出精确小标宋；待manifest确认","与方正大标宋并非同款","查manifest"
-"方正书宋_GBK","FZShuSong","KTXP&VCB Plastic Memories","STAFF样式","P2","摘要未列出精确书宋；待manifest确认","工作人员信息样式","查manifest"
-"HGMaruGothicMPRO","HG丸ゴシックM-PRO","KTXP&VCB Plastic Memories","OP日文歌词","P2","摘要未列出；待manifest确认","日文字体项目专用","检查文件内部名"
-"MS Mincho","MS 明朝","SumiSora NGNL","日文样式","P2","可能由Windows系统字体提供，不能按51包缺失判定","运行机器/字体环境不同","检查Windows系统字体是否安装及mpv字体回退"
-"Arial","Arial","轻之国度 Endro；MingYSub DIY!! README","Screen/英文样式","P2","51包摘要未提到Arial文件；但Windows常见系统字体，不能只从font pack判缺","包内未包含不等于系统不可用","检查操作系统字体及mpv fallback"
-"EPSON 太明朝体Ｂ","EPSON太明朝体B","VCB/Yojou Senki Web Preview 12","JP样式","P2","摘要未列出；待manifest确认","预告片／日文字样专用，不代表长期组惯例","检查font name与授权获取"
-"A-OTF Kocho Std Heavy","A-OTF Kocho Std Heavy","UHA-WINGS Kuzu no Honkai","Logo样式","P3","摘要未列出；待manifest确认","片名字标用途","查manifest"
-"Kozuka Mincho Pr6N M","小塚明朝 Pr6N M","UHA-WINGS Kuzu no Honkai","竖排屏幕字样式","P3","摘要未列出；待manifest确认","单作品屏幕字","查manifest"
-"Kozuka Gothic Pro R","小塚ゴシック Pro R","UHA-WINGS Kuzu no Honkai","竖排屏幕字样式","P3","摘要未列出；待manifest确认","单作品屏幕字","查manifest"
-"FA 隷書Ｍ","FA 隷書 M","UHA-WINGS Kuzu no Honkai","OP日文歌词样式","P3","摘要未列出；待manifest确认","装饰用途","查manifest"
+﻿font_name_as_in_ASS,normalized_family_or_alias,first_seen_in,evidence_role,priority,51_file_pack_status,comparison_note,next_verification,1061_inventory_status,1061_matched_files
+Dream Han Sans SC W20,Dream Han Sans / 梦源黑体 SC W20,SweetSub - Koori no Jouheki EP16,Default/Text-CN/Sign/Note；主对白与画面字,P0,未取得51文件精选包manifest；不可判定,现有思源黑体不能视为 Dream Han 的同一文件名/字重；字体衍生关系不等于完全等价,在 manifest.csv 中查 Full Name/PostScript Name；对内部name table再比对,PRESENT_EXACT_NAME_TABLE,DreamHanSans-W20.ttc
+Dream Han Sans J W20,Dream Han Sans / 梦源黑体 J W20,SweetSub - Koori no Jouheki EP16,日文对白样式,P0,未取得51文件精选包manifest；不可判定,不要以普通日文字体或 Source Han Sans SC 替代判断,同上,PRESENT_EXACT_NAME_TABLE,DreamHanSans-W20.ttc
+Dream Han Serif SC W14,Dream Han Serif / 梦源宋体 SC W14,SweetSub - Koori no Jouheki EP16,OP/ED、中文歌词及标题相关样式,P0,未取得51文件精选包manifest；不可判定,与Source Han Serif SC SemiBold不是同一ASS字体名；需核对实际文件,查Full Name/PostScript Name/字重,PRESENT_EXACT_NAME_TABLE,DreamHanSerif-W14.ttc
+Dream Han Serif J W14,Dream Han Serif / 梦源宋体 J W14,SweetSub - Koori no Jouheki EP16,日文歌词样式,P1,未取得51文件精选包manifest；不可判定,角色限于该样本的日文歌词,查manifest,PRESENT_EXACT_NAME_TABLE,DreamHanSerif-W14.ttc
+华康圆体W7-A,DF Yuan W7-A,千夏 - Nekopara Today's Neko08,Default/Upper；主对白,P0,未取得51文件精选包manifest；不可判定,与华康方圆体、方正准圆不同，不能按“都有圆体”算作同款,查字体内部Full Name/PS Name,PRESENT_EXACT_NAME_TABLE,华康圆体W7-A.ttf
+华康方圆体W7(P),DFP FangYuan W7(P),千夏 - Nekopara Today's Neko08；DHR文件标签样本,OPCN/EDCN/Title；歌词与标题,P0,未取得51文件精选包manifest；不可判定,繁简/地区/厂商版本可能有不同内部名；与方正准圆不是同款,查精确文件名和name table,PRESENT_EXACT_NAME_TABLE,DFGBFY7.TTC ; 华康方圆体W7 & 华康方圆体W7(P).ttc ; 华康方圆体W7 & 华康方圆体W7(P).TTF ; 华康方圆体W7.TTC
+华康翩翩体W5-A,DF HanziPen W5-A,喵萌 WEP / Doremi；MingYSub Painoko ED；SweetSub Mirai,歌词、手写风、部分画面字,P1,未取得51文件精选包manifest；不可判定,已找到多个不同作品／来源引用，不能只因字体家族有其他手写款就认为覆盖,查manifest的Full Name/PS Name,PRESENT_EXACT_NAME_TABLE,DFHanziPenW5-A.ttf ; 华康翩翩体W5-A.ttf
+华康翩翩体W3-A,DF HanziPen W3-A,喵萌 Doremi,手写／作品字,P2,未取得51文件精选包manifest；不可判定,W3 与 W5 是不同字重,核对内部字重,PRESENT_EXACT_NAME_TABLE,DFHanziPenW3-A.ttf ; 华康翩翩体W3-A.ttf
+森泽UD新黑 Gb4 M,MO UDShinGo SC Gb4 M,MingYSub Painoko / Machikado Mazoku,中文主对白,P0,未取得51文件精选包manifest；不可判定,不要把 A-OTF UD Shin Go Pr6N M 和 Morisawa MO UDShinGo 视为同一文件,在manifest和字体name table中查完全匹配,PRESENT_EXACT_NAME_TABLE,MO-UDShinGoSCGb4-Med.otf
+森泽UD新黑 Gb4 R,MO UDShinGo SC Gb4 R,MingYSub Dorama-DIY；Skip to Loafer README,简体中文字体需求,P1,未取得51文件精选包manifest；不可判定,同家族不同字重，不能自动用M代替R,检查PostScript Name和OS/2 weight,NOT_FOUND_IN_1061_SNAPSHOT,
+A-OTF UD Shin Go Pr6N M,A-OTF UD新ゴ Pr6N M,MingYSub Machikado Mazoku,日文主对白,P0,未取得51文件精选包manifest；不可判定,A-OTF UD Shin Go 与 A-OTF Ryumin/Maru Folk 不同家族,查完整内部名称及对应字重,PRESENT_EXACT_NAME_TABLE,A-OTF-UDShinGoPr6N-Medium.otf
+汉仪玄宋 75S,HYXuanSong 75S,喵萌项目 README（ODDTAXI / 多项目）,项目字体；字幕角色需要回到ASS确认,P1,未取得51文件精选包manifest；不可判定,已有某些汉仪玄宋文件也不等于75S完整覆盖,查manifest精确名称和字符覆盖,PRESENT_EXACT_NAME_TABLE,HYXuanSong75S.ttf
+汉仪正圆-75S,HY ZhengYuan 75S,MingYSub mono songs,歌词／小字,P1,未取得51文件精选包manifest；不可判定,与方正准圆、华康圆体不可等同,查内部name table,PRESENT_EXACT_NAME_TABLE,HYZhengYuan-75S.ttf ; 汉仪正圆-75S.ttf
+汉仪正圆-85S,HY ZhengYuan 85S,MingYSub mono songs,ED歌词,P1,未取得51文件精选包manifest；不可判定,75S与85S为不同字重/版本,查内部name table,PRESENT_EXACT_NAME_TABLE,HYZhengYuan-85S.ttf
+FZLanTingYuan-DB-GBK,方正兰亭圆_GBK_中,喵萌 Touhai；SweetSub Mai Mai Miracle/Mai etc.,可能主对白或屏幕字，取决于ASS style,P1,未取得51文件精选包manifest；不可判定,不能仅凭“兰亭圆”家族字样确认 DB 版本已存在,从manifest确认文件及字体内部字重,PRESENT_EXACT_NAME_TABLE,FZLanTingYuan-DB-GBK.ttf ; FZLanTYK_Zhong.TTF ; 方正兰亭圆_GBK_中.ttf
+FZLanTingYuan-DB1-GBK,方正兰亭圆_GBK_中粗,MingYSub Bocchi / Dorama-DIY；喵萌项目清单,画面字/字幕样式,P1,未取得51文件精选包manifest；不可判定,DB与DB1不可互相假定等价,查文件内部OS/2 weight和PS Name,PRESENT_EXACT_NAME_TABLE,FZLanTYK_ZhongCu.TTF ; 方正兰亭圆_GBK_中粗.ttf
+FZShaoEr-M11,方正少儿_GBK,轻之国度 Endro Title；喵萌 Nonnon,标题,P2,未取得51文件精选包manifest；不可判定,标题字不是主对白必需，但同名需匹配,查manifest,PRESENT_EXACT_NAME_TABLE,FZSEK.TTF ; 方正少儿_GBK.ttf
+方正胖娃_GBK,方正胖娃,轻之国度 Endro NextTitle,片尾预告标题,P2,未取得51文件精选包manifest；不可判定,可能有字体别名，需用内部名称确认,查name table,NOT_FOUND_IN_1061_SNAPSHOT,
+FZMiaoWu-GBK,方正喵呜_GBK,北宇治 Bocchi OP Title；喵萌 Yuru Camp README,OP标题／作品专用字,P2,未取得51文件精选包manifest；不可判定,不要与“方正喵鸣”文件名直接认定为同一个,查字体内部Full Name/PS Name,PRESENT_EXACT_NAME_TABLE,FZMiaoWuK.TTF ; 方正喵呜_GBK.ttf
+FZKaTong-M19,方正卡通_GBK,SumiSora NGNL；喵萌 Nonnon README,画面字／卡通字,P2,未取得51文件精选包manifest；不可判定,与常规方正字体家族不同,查manifest,PRESENT_EXACT_NAME_TABLE,FZKATK.TTF ; 方正卡通_GBK.ttf
+方正中倩_GBK,FZZhongQian,悠哈璃羽 Kuzu no Honkai,正片对白,P1,未取得51文件精选包manifest；不可判定,正片对白用字，优先级高于片头标题字,查manifest,PRESENT_EXACT_NAME_TABLE,方正中倩_GBK.ttf
+方正宋黑_GBK,FZSongHei-B07,悠哈璃羽 Kuzu no Honkai；LoliHouse Revue尾注,标题/片尾/屏幕字,P2,未取得51文件精选包manifest；不可判定,与宋体/雅黑不是等价字体,查manifest,PRESENT_EXACT_NAME_TABLE,FZSHK.TTF ; 方正宋黑_GBK.ttf
+华康少女文字W5,DF Girl Text W5,悠哈璃羽 Kakegurui SP01,菜单文字,P2,未取得51文件精选包manifest；不可判定,特典菜单专用，不是主对白,查manifest,PRESENT_EXACT_NAME_TABLE,DFShaoNvW5-GB.ttc ; 华康少女文字W5 & 华康少女文字W5(P).ttc
+FOT-CookHand Std R,FOT CookHand Std R,MingYSub Painoko ED；喵萌 Bocchi ED effect,日文ED歌词/手写效果,P2,未取得51文件精选包manifest；不可判定,歌词用途，避免放进主对白核心集,查manifest与Fontworks内部名称,NOT_FOUND_IN_1061_SNAPSHOT,
+FOT-UDMarugo_Large Pr6N B,FOT UDMarugo Large Pr6N B,MingYSub mono OP/ED,日文OP/ED歌词,P2,未取得51文件精选包manifest；不可判定,家族名相近不代表Large/Pr6N/字重匹配,逐一比对名称和字重,PRESENT_EXACT_NAME_TABLE,FOT-UDMarugo_LargePr6N-B.otf
+FOT-UDMarugo_Large Pr6N E,FOT UDMarugo Large Pr6N E,SweetSub Mai Mai Miracle README,项目字体需求,P2,未取得51文件精选包manifest；不可判定,不要以DB或B替代,查manifest,NOT_FOUND_IN_1061_SNAPSHOT,
+Source Han Sans SC Medium,思源黑体 SC Medium,SweetSub Sarazanmai,Main主对白样式,P0,未取得51文件精选包manifest；不可判定,字体名与地区版本需匹配；不能凭家族名确认覆盖,检查Full Name/PostScript Name与内部字重,PRESENT_EXACT_NAME_TABLE,SourceHanSans.ttc ; SourceHanSansSC-Medium.otf
+Source Han Sans TC Medium,思源黑体 TC Medium,SweetSub Sarazanmai,繁体Main主对白样式,P0,未取得51文件精选包manifest；不可判定,SC与TC不可简单视为同一个字形版本,查manifest,PRESENT_EXACT_NAME_TABLE,SourceHanSans.ttc ; SourceHanSansTC-Medium.otf
+Source Han Serif SC SemiBold,思源宋体 SC SemiBold,SweetSub Sarazanmai,Next/歌词相关样式,P1,未取得51文件精选包manifest；不可判定,精确字重需确认,查manifest,PRESENT_EXACT_NAME_TABLE,SourceHanSerif.ttc
+Source Han Serif TC SemiBold,思源宋体 TC SemiBold,SweetSub Sarazanmai,繁体歌词/次样式,P1,未取得51文件精选包manifest；不可判定,TC字形版本需单独确认,查manifest,PRESENT_EXACT_NAME_TABLE,SourceHanSerif.ttc
+方正小标宋_GBK,FZXiaoBiaoSong,KTXP&VCB Plastic Memories,Default主对白样式,P1,未取得51文件精选包manifest；不可判定,与方正大标宋并非同款,查manifest,PRESENT_EXACT_NAME_TABLE,FZXiaoBiaoSong-B05.ttf ; 方正小标宋_GBK.TTF
+方正书宋_GBK,FZShuSong,KTXP&VCB Plastic Memories,STAFF样式,P2,未取得51文件精选包manifest；不可判定,工作人员信息样式,查manifest,PRESENT_EXACT_NAME_TABLE,方正书宋_GBK.TTF
+HGMaruGothicMPRO,HG丸ゴシックM-PRO,KTXP&VCB Plastic Memories,OP日文歌词,P2,未取得51文件精选包manifest；不可判定,日文字体项目专用,检查文件内部名,PRESENT_EXACT_NAME_TABLE,HGRSMP.TTF
+MS Mincho,MS 明朝,SumiSora NGNL,日文样式,P2,未取得51文件精选包manifest；不可判定,运行机器/字体环境不同,检查Windows系统字体是否安装及mpv字体回退,PRESENT_EXACT_NAME_TABLE,msmincho.ttc
+Arial,Arial,轻之国度 Endro；MingYSub DIY!! README,Screen/英文样式,P2,未取得51文件精选包manifest；不可判定,包内未包含不等于系统不可用,检查操作系统字体及mpv fallback,NOT_IN_FOLDER_SYSTEM_FONT_CHECK,
+EPSON 太明朝体Ｂ,EPSON太明朝体B,VCB/Yojou Senki Web Preview 12,JP样式,P2,未取得51文件精选包manifest；不可判定,预告片／日文字样专用，不代表长期组惯例,检查font name与授权获取,PRESENT_EXACT_NAME_TABLE,epminbld_10.ttf
+A-OTF Kocho Std Heavy,A-OTF Kocho Std Heavy,UHA-WINGS Kuzu no Honkai,Logo样式,P3,未取得51文件精选包manifest；不可判定,片名字标用途,查manifest,NOT_FOUND_IN_1061_SNAPSHOT,
+Kozuka Mincho Pr6N M,小塚明朝 Pr6N M,UHA-WINGS Kuzu no Honkai,竖排屏幕字样式,P3,未取得51文件精选包manifest；不可判定,单作品屏幕字,查manifest,NOT_FOUND_IN_1061_SNAPSHOT,
+Kozuka Gothic Pro R,小塚ゴシック Pro R,UHA-WINGS Kuzu no Honkai,竖排屏幕字样式,P3,未取得51文件精选包manifest；不可判定,单作品屏幕字,查manifest,NOT_FOUND_IN_1061_SNAPSHOT,
+FA 隷書Ｍ,FA 隷書 M,UHA-WINGS Kuzu no Honkai,OP日文歌词样式,P3,未取得51文件精选包manifest；不可判定,装饰用途,查manifest,NOT_FOUND_IN_1061_SNAPSHOT,
