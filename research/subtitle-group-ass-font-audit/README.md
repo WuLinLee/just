@@ -81,7 +81,7 @@ VCB-Studio 是常见压制／发布标签，但并不代表所有随包字幕均
 
 ## 批量解析辅助脚本
 
-在研究目录内执行（Python 3.9+，无第三方依赖）：
+在研究目录内执行（Python 3.10+，无第三方依赖）：
 
 ```bash
 python scripts/ass_font_audit.py --input /path/to/subtitle-folder
