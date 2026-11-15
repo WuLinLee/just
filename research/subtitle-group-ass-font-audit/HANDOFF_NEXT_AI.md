@@ -93,7 +93,11 @@
 - 汉仪玄宋/正圆具体字重；
 - 方正兰亭圆 DB / DB1，方正少儿、胖娃、喵呜等具体内部名称。
 
-### 3. 对每组至少抽取三部作品／多集 ASS
+### 3. 使用批量解析脚本并扩大样本
+
+先运行 `scripts/ass_font_audit.py` 生成初始 CSV/JSON，再人工检查它识别的 active Dialogue styles、行内 `\\fn` 和重置标签。可用 `python -m unittest discover -s tests` 运行最小测试。
+
+对每组至少抽取三部作品／多集 ASS：
 
 建议优先扩充 Nekomoe、SweetSub、MingYSub、Kitauji、轻之国度、千夏和 UHA-WINGS。每份 ASS：
 - 保存 source URL；
@@ -138,4 +142,6 @@
 - `data/font-candidates.csv`：字体候选、角色、优先级和核验状态
 - `data/group-font-evidence.json`：供后续 AI 直接读取的结构化摘要
 - `docs/ass-font-audit-method.md`：提取方法与判断规则
+- `scripts/ass_font_audit.py`：Python标准库批量抽取器
+- `tests/test_ass_font_audit.py`：最小解析测试
 - `README.md`：研究目录总览
