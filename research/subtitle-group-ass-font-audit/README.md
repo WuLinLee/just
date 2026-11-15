@@ -1,7 +1,10 @@
 # 动漫／影视字幕组 ASS 字体抽样审计
 
+> **2026-11-16 库存复核更新**：已用 2026-11-12 的 Font Name Inspector 全量输出（1,061 个文件 / 1,695 个 face）与 ASS 候选字体做内部 name table 比对。40 项候选中 **31 项已精确找到、8 项未检出、Arial 1 项需检查 Windows 系统字体**。这不是 51 文件精选包差集；51 包 manifest 仍未取得。查看 [完整审计报告](../../FONT_INVENTORY_AUDIT.md)、[逐项对照 CSV](data/ass-font-inventory-comparison.csv)、[无 Unicode cmap 清单](../../inventory/no-unicode-cmap-faces.csv) 与 [cmap 恢复记录](../../inventory/recovered-cmap-faces.csv)。
+
+
 > 审计日期：2026-11-16  
-> 状态：**公开资料抽样与静态 ASS 样本分析；尚未完成本机 51 款精选包的逐文件差集，也未进行 mpv/libass 实机播放验证。**
+> 状态：**公开资料抽样、静态 ASS 样本分析及原始 1,061 文件库的内部名称对照已完成首轮；51 文件精选包逐文件差集和 mpv/libass 实机播放仍未完成。**
 
 本目录记录这轮针对多个中文动漫字幕来源的公开 ASS 字幕字体调查，目标是帮助后续研究者回答：
 
@@ -48,28 +51,21 @@ VCB-Studio 是常见压制／发布标签，但并不代表所有随包字幕均
 
 因此，不能把一个 ASS 的所有 Style 字体简单视作“主对白必装字体”。样式名称和事件用途必须结合起来判断。
 
-### 3. 当前最值得继续核验的字体候选
+### 3. 原始 1,061 文件库的已存在与未检出项
 
-**高优先级：**
+已确认存在的高优先级字体包括 Dream Han Sans SC/J W20、Dream Han Serif SC/J W14、华康圆体W7-A、华康方圆体W7(P)、森泽UD新黑 Gb4 M、A-OTF UD Shin Go Pr6N M、Source Han Sans SC/TC Medium、Source Han Serif SC/TC SemiBold 等。
 
-- 梦源黑体：`Dream Han Sans SC W20`、`Dream Han Sans J W20`
-- 梦源宋体：`Dream Han Serif SC W14`、`Dream Han Serif J W14`
-- 华康圆体：`华康圆体W7-A`
-- 华康方圆体：`华康方圆体W7(P)`／`華康方圓體W7(P)`
-- 森泽 UD 新黑：`森泽UD新黑 Gb4 M`、`森泽UD新黑 Gb4 R`
-- A-OTF：`A-OTF UD Shin Go Pr6N M`
+40 项 ASS 候选的逐项结果在 [ass-font-inventory-comparison.csv](data/ass-font-inventory-comparison.csv)。当前精确未检出的 8 项：
+- 森泽UD新黑 Gb4 R（同族 M 已有，但不是同一字重）
+- 方正胖娃_GBK
+- FOT-CookHand Std R
+- FOT-UDMarugo_Large Pr6N E（同族 B 已有）
+- A-OTF Kocho Std Heavy
+- Kozuka Mincho Pr6N M（同目录有其他 Kozuka Mincho 变体）
+- Kozuka Gothic Pro R（有相邻系列/字重）
+- FA 隷書Ｍ
 
-**第二优先级（主要为歌词、标题、注释和画面字）：**
-
-- 华康翩翩体 W5-A／W3-A
-- 汉仪正圆 75S／85S、汉仪玄宋 75S、汉仪旗黑系列
-- 方正少儿、方正胖娃、方正喵呜、方正卡通
-- 方正中倩、方正宋黑、华康少女文字
-- FOT-CookHand、FOT-TelopMin、FOT-UDMarugo 等特定字重
-
-完整角色／证据／差异状态见 [font-candidates.csv](data/font-candidates.csv)。
-
-## 与已有字体包和本仓库既有清单的关系
+另有 Arial 不在自带目录，先检查 Windows 系统字体。完整匹配文件名、face、内部名称和 cmap 状态见逐项 CSV。## 与已有字体包和本仓库既有清单的关系
 
 请特别区分以下三个集合：
 
